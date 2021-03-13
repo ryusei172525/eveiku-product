@@ -13,9 +13,9 @@ var http = require('http');
  */
 
 // 本番
-// var port = normalizePort(process.env.PORT || '80');
+var port = normalizePort(process.env.PORT || '80');
 // ローカル
-var port = normalizePort(process.env.PORT || '3000');
+// var port = normalizePort(process.env.PORT || '3000');
 
 app.set('port', port);
 
@@ -29,8 +29,8 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-// ローカル
-server.listen(port);
+
+server.listen(port, function(){process.setuid("500")});
 
 
 server.on('error', onError);
