@@ -30,7 +30,7 @@ var server = http.createServer(app);
  */
 
 // ローカル
-server.listen(port, '0.0.0.0',  function(){process.setuid(80)});
+server.listen(port, function(){process.setuid("ec2-user")});
 
 
 server.on('error', onError);
