@@ -28,8 +28,14 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
+// ローカル
+// server.listen(port);
 
-server.listen(port);
+// 本番
+server.listen(port, function () {
+  console.log('change user');
+  process.setuid('ec2-user');
+});
 server.on('error', onError);
 server.on('listening', onListening);
 
