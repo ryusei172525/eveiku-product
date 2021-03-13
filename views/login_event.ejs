@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href='/stylesheets/login.css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <title></title>
+</head>
+
+<body>
+  <header>
+    <a href="/">
+      <img src="..\images\eveiku_icon\eveiku_icon2.png" width="50px">
+      <h1>イベイク</h1>
+    </a>
+  </header>
+  <main>
+    <section class="wrapper_login">
+      <p>イベントの参加から主催まで<br>このアカウント一つで出来ます。</p>
+      <div class="container_signin">
+        <h2>ログイン</h2>
+        <form action="/login" method="POST">
+          <input type="email" name="email" placeholder="メールアドレス">
+          <input type="password" name="password" placeholder="パスワード">
+          <input type="submit" value="ログイン" class="btn">
+        </form>
+        <p class="">OR</p>
+        <button id="signup" class="btn">新規登録</button>
+      </div>
+    </section>
+    <section class="container_signup display_none">
+      <h2>新規会員</h2>
+      <p class="btn_close_modal">×</p>
+      <form action="/register" method="POST" name="signup">
+        <input class="email" type="email" name="register_email" placeholder="メールアドレス" required>
+        <input class="password" type="password" name="register_password" placeholder="パスワード" required>
+        <input class="name" type="text" name="register_name" placeholder="氏名" required>
+        <select class="gender" name="register_gender" required>
+          <option hidden>性別</option>
+          <option value="男性">男性</option>
+          <option value="女性">女性</option>
+          <option value="未回答">未回答</option>
+        </select>
+        <%- include('../views/partial/latest/birthday_partial',{date : "0000-00-00" }) %>
+          <input type="text" name="birthday" style="display: none;">
+
+          <select class="occupation" name="register_occupation" required>
+            <option value="" hidden>業種</option>
+            <option value="農業・林業">農業・林業</option>
+            <option value="漁業">漁業</option>
+            <option value="農鉱業・採石業・砂利採取業業・林業">農鉱業・採石業・砂利採取業業・林業</option>
+            <option value="鉱業・採石業・砂利採取業">鉱業・採石業・砂利採取業</option>
+            <option value="建設業">建設業</option>
+            <option value="製造業">製造業</option>
+            <option value="電気・ガス・熱供給・水道業">電気・ガス・熱供給・水道業</option>
+            <option value="情報通信業">情報通信業</option>
+            <option value="運輸業・郵便業">運輸業・郵便業</option>
+            <option value="卸売業・小売業">卸売業・小売業</option>
+            <option value="金融業・保険業">金融業・保険業</option>
+            <option value="不動産業・物品賃貸業">不動産業・物品賃貸業</option>
+            <option value="学術研究・専門・技術サービス業">学術研究・専門・技術サービス業</option>
+            <option value="宿泊業・飲食店">宿泊業・飲食店</option>
+            <option value="生活関連サービス業・娯楽業">生活関連サービス業・娯楽業</option>
+            <option value="教育学習支援業">教育学習支援業</option>
+            <option value="医療・福祉">医療・福祉</option>
+            <option value="複合サービス事業">複合サービス事業</option>
+            <option value="サービス業（他に分類されないもの）">サービス業（他に分類されないもの）</option>
+            <option value="公務（他に分類されるものを除く）">公務（他に分類されるものを除く）</option>
+            <option value="その他">その他</option>
+          </select>
+          <select class="industry" name="register_industry" required>
+            <option value="" hidden>職種</option>
+            <option value="PM・プロデューサー・ディレクター">PM・プロデューサー・ディレクター</option>
+            <option value="マーケティング・PR">マーケティング・PR</option>
+            <option value="デザイナー">デザイナー</option>
+            <option value="コーポレート">コーポレート</option>
+            <option value="経営・CxO">経営・CxO</option>
+            <option value="事業開発">事業開発</option>
+            <option value="セールス・カスタマーサクセス">セールス・カスタマーサクセス</option>
+            <option value="コンサルティング">コンサルティング</option>
+            <option value="編集・ライティング">編集・ライティング</option>
+            <option value="投資家">投資家</option>
+            <option value="学生">学生</option>
+            <option value="その他">その他</option>
+          </select>
+          <input class="company" type="text" name="register_company" placeholder="会社名/学校名" required>
+          <input class="university" type="text" name="register_university" placeholder="最終学歴(学校名まで)" required>
+      </form>
+      <button onclick="document.signup.submit()" class="btn_submit">新規登録</button>
+    </section>
+  </main>
+  <script>
+    const btn_signup = document.querySelector("#signup");
+    const container_signup = document.querySelector(".container_signup")
+    btn_signup.addEventListener("click", () => {
+      container_signup.classList.remove("display_none");
+    })
+
+    const btn_close_modal = document.querySelector(".btn_close_modal");
+    btn_close_modal.addEventListener("click", () => {
+      container_signup.classList.add("display_none");
+    })
+  </script>
+</body>
+
+</html>

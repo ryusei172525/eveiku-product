@@ -1,0 +1,250 @@
+.container_buildpage {
+  display: flex;
+  position: relative;
+}
+
+.sidebar {
+  width: 20%;
+  min-width: 200px;
+  height: calc(100% - 65px);
+  position: sticky;
+  top: 80px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.section-wrap {
+  /* width: 80%; */
+}
+
+/* サイドバー */
+
+.sidebar > div > p {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3rem;
+  padding: 3rem 2rem 0 2rem;
+}
+
+.sidebar > div > p > label {
+  padding-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.sidebar > div > p > select,
+.sidebar > div > p > input {
+  font-size: 2.5rem;
+  border-radius: 5px;
+}
+
+#editStyleColor {
+  width: 4rem;
+  height: 4rem;
+}
+
+.container_button_func {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container_button_func > button {
+  width: 80%;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  border-radius: 5px;
+  background-color: white;
+  border: none;
+  border: solid 2px #f2cc19;
+  appearance: none;
+  outline: none;
+  font-weight: bolder;
+  font-size: 1.8rem;
+}
+
+.container_button_func > button:hover {
+  box-shadow: 0 0 2px #79650f;
+}
+
+.container_button_func > button:nth-of-type(3) {
+  color: #f2cc19;
+  font-size: 2rem;
+}
+
+.container_button_func > button:last-of-type {
+  background-color: #f2cc19;
+  color: white;
+  font-size: 2rem;
+}
+/* テンプレート選択画面 */
+.modal_template {
+  width: 95%;
+  min-height: 70%;
+  background-color: #fff;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15rem;
+  z-index: 999;
+  opacity: 1;
+  padding: 3rem;
+  border-radius: 15px;
+  box-shadow: 0 0 8px gray;
+}
+
+.list_template {
+  display: flex;
+}
+
+.list_template > div {
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list_template > div > img {
+  width: 80%;
+  height: auto;
+  padding-bottom: 1rem;
+}
+
+.list_template > div > button {
+  width: 50%;
+  background-color: white;
+}
+
+/* 公開設定編集画面 */
+.modal_setting {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  height: calc(100% - 100px);
+  /* top: 10rem; */
+  padding: 1rem 5rem;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 8px gray;
+  /* height: 85%; */
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.bg_modal_setting {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.027);
+  backdrop-filter: blur(2px);
+}
+
+/* 15/10 */
+.btn_close_modal {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+}
+
+.btn_close {
+  margin: 1rem auto;
+  display: flex;
+  background: #f2cc19;
+  border: unset;
+  padding: 0.5rem 2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  color: white;
+}
+
+.modal_setting > h2 {
+  font-size: 2rem;
+  font-weight: bolder;
+  margin: auto;
+  text-align: center;
+}
+
+.modal_setting > h2 > span {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.modal_setting > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - 100px);
+}
+.modal_setting > div > div {
+  width: 60rem;
+  display: flex;
+  justify-content: space-between;
+  /* padding-bottom: 1.5rem; */
+  height: calc(100% / 16);
+  padding: 0;
+}
+
+.modal_setting > div > div > p {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.modal_setting > div > div > p > span {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.modal_setting > div > div > input,
+.modal_setting > div > div > select {
+  border-radius: 5px;
+  padding: 0 1rem;
+  border: solid 1px black;
+  width: 40rem;
+}
+
+.modal_setting > div > div > select {
+  width: 42.2rem;
+}
+
+.modal_setting > div > div > input:active {
+  box-shadow: none;
+}
+
+.button_close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
+.button_close::before {
+  content: "✕";
+  font-size: 2rem;
+}
+.modal_setting .button_close {
+  top: 2rem;
+}
+
+@media screen and (max-width: 960px) {
+  main {
+    display: none;
+  }
+  body::before {
+    content: "※モバイル版は準備中です";
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+  }
+}

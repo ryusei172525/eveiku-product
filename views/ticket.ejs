@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/ticket.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="ticket">
+        <div class="bg">
+            <main>
+                <div class="top">
+                    <h1 class="logo"><span class="valule_log">
+                            <div class="left">
+                                <p class="date">
+                                    <span class="value_date_yyy">
+                                        <% if(data[0].date !=null) {%>
+                                            <%= data[0].date.getFullYear() %>
+                                    </span>年<span class="value_data_mm">
+                                        <%= data[0].date.getMonth() + 1%>
+                                    </span>月<span class="value_date_dd">
+                                        <%= data[0].date.getDate() %>
+                                    </span>日(<span class="value_data_w">
+                                        <% day=[ "日" , "月" , "火" , "水" , "木" , "金" , "土" ] %>
+                                            <%= day[data[0].date.getDay()] %>
+                                    </span>)<%}%>
+                                </p>
+                                <p class=""><span class="category value_category"></span>
+                                    <span class="price value_price">
+                                        <%if ( data[0].price　===0){ %>
+                                            無料
+                                            <% }else{%>
+                                                <%= data[0].price %>円
+                                                    <% } %>
+                                    </span>
+                                </p>
+                            </div>
+                </div>
+                <!-- <h1 class="subtitle value_subtitle">人事キャリアUP</h1> -->
+                <h2 class="subtitle value_subtitle">
+                    <%= data[0]["title"] %>
+                </h2>
+                <div class="bottom">
+                    <p class="organized">主催：<span class="value_organized">
+                            <%= data[0]["organizer"] %>
+                        </span></p>
+                    <p class="venue">
+                        <% if(data[0].entry_way===3){%>
+                            <%= "オンライン" %>
+                                <% } %>
+                                    <% if(data[0].entry_way===2){%>
+                                        <%= "オフライン" %>
+                                            <% } %>
+                                                会場：<span class="value_vene">
+                                                    <%= data[0].prefecture %>
+                                                        <%= data[0].city%>
+                                                            <%= data[0].area %>
+                                                                <%= data[0].building %>
+                                                </span>
+                    </p>
+                </div>
+            </main>
+            <aside>
+                <div>
+                    <h2 class="logo"><span class="valule_log"><img src="<%= data[0].thmbnail %>" alt=""
+                                class="place2-img" width="300px"></span></h2>
+                    <p class=""><span class="category value_category"></span>
+                        <span class="price value_price">
+                            <%if ( data[0].price　===0){ %>
+                                無料
+                                <% }else{%>
+                                    <%= data[0].price %>円
+                                        <% } %>
+                        </span>
+                    </p>
+                    <div class="bottom">
+                    </div>
+                    <div class="bottom">
+                        <p class="date">
+                            <span class="value_date_yyy">
+                                <% if(data[0].date!=null){ %>
+                                    <%= data[0].date.getFullYear() %>
+                            </span>年<span class="value_data_mm">
+                                <%= data[0].date.getMonth() + 1%>
+                            </span>月<span class="value_date_dd">
+                                <%= data[0].date.getDate() %>
+                            </span>日(<span class="value_data_w">
+                                <%= day[data[0].date.getDay()] %>
+                            </span>)<%}%>
+                        </p>
+                        <p class="organized">主催：<span class="value_organized">
+                                <%= data[0]["organizer"] %>
+                            </span></p>
+                        <p class="venue"><span class="value_vene"></span>
+                            <% if(data[0].entry_way===3){%>
+                                <%= "オンライン" %>
+                                    <% } %>
+                                        <% if(data[0].entry_way===2){%>
+                                            <%= "オフライン" %>
+                                                <% } %>
+                                                    会場：<%= data[0].prefecture %>
+                                                        <%= data[0].city%>
+                                                            <%= data[0].area %>
+                                                                <%= data[0].building %></span>
+                        </p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <div>
+        <p>チケットはいつでもマイページから確認出来ます</p>
+        <button onclick="location.href='/home'">ホーム画面に戻る</button>
+    </div>
+</body>
+
+</html>

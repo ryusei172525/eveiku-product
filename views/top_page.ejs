@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href='/stylesheets/top-page.css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+  <title></title>
+</head>
+
+<body>
+  <header>
+    <div class="header-logo">
+      <a href="/">
+        <img src="..\images\eveiku_icon\eveiku_icon2.png" width="50px" class="eveiku_logo">
+        <h1 class="logo">イベイク</h1>
+      </a>
+    </div>
+
+    <!-- 🍔 -->
+    <input id="menu" type="checkbox">
+    <label for="menu" class="open">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    <!-- <label for="menu" class="back"></label> -->
+
+    <aside>
+      <!-- <label for="menu" class="close">×</label> -->
+      <nav>
+        <ul>
+          <li><a href="/login" class="login">ログイン</a></li>
+          <!-- <li><a href="/syu-sign-up">新規登録</a></li> -->
+        </ul>
+      </nav>
+    </aside>
+    <!-- 🍔 -->
+
+    <nav class="pc-nav">
+      <ul>
+        <li><a href="/login" class="login">ログイン</a></li>
+        <!-- <li><button class="pc-nav__btn"><a href="/syu-sign-up">新規登録</a></button></li> -->
+      </ul>
+    </nav>
+  </header>
+
+
+  <main>
+    <div class="bg2 display-none"></div>
+    <div class="first-view pc">
+      <div class="first-view__card">
+        <div class="catch">
+          <p class="catch-copy">イベントのすべてが<br>ここで出来ます。</p>
+          <p class="catch-copy2">イベイクは「<span class="underline">宣伝</span>・<span class="underline">管理</span>・<span
+              class="underline">運用</span>・<span class="underline">開催</span>」を<br>まとめて簡潔にするための<br><span
+              class="bg">完全無料</span>プラットフォームです。</p>
+          <a href="/login">
+            <button class="first-view__btn">
+              <p>今すぐイベントを開催</p>
+            </button>
+          </a>
+        </div>
+        <div class="catch-img">
+          <img src="/images/top.png" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="first-view sp">
+      <p class="catch-copy">イベントのすべてが<br>ここで出来ます。</p>
+      <div class="first-view__card">
+        <div class="catch">
+          <div class="">
+            <p class="catch-copy2">イベイクは「<span class="underline">宣伝</span>・<span class="underline">管理</span>・<span
+                class="underline">運用</span>・<span class="underline">開催</span>」を<br>まとめて簡潔にするための<br><span
+                class="bg">完全無料</span>プラットフォームです。</p>
+            <a href="/login">
+              <button class="first-view__btn">
+                <p class="desc">今すぐイベントを開催</p>
+              </button>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <div class="wave"></div>
+    </div>
+
+    <!-- <div class="section case-study">
+        <h2 class="section-title">case study</h2>
+        <h3 class="section-subtitle">導入事例</h3>
+    </div> -->
+    <div class="section feature">
+      <h2 class="section-title">Feature</h2>
+      <h3 class="section-subtitle">イベイクの特徴</h3>
+      <div class="section-inner">
+        <div class="section-txt">
+          <p class="catch-copy">イベントサイトが<br><span class="underline-yel">手軽</span>につくれる</p>
+          <p class="desc">専門知識がなくても<br>豊富なテンプレートを使用して<br>直感的な操作で簡単にサイトが作れます</p>
+        </div>
+        <div class="section-img">
+          <img src="/images/top001.png" alt="" class="feature-img">
+        </div>
+      </div>
+      <div class="section-inner">
+        <div class="section-txt">
+          <p class="catch-copy">作ったサイトで<br><span class="underline-yel">様々な管理</span>が出来る</p>
+          <p class="desc">売上や参加者管理まで<br>イベイク一つで出来ます。</p>
+        </div>
+        <div class="section-img">
+          <img src="/images/top002.jpg" alt="" class="feature-img">
+        </div>
+      </div>
+      <div class="section-inner">
+        <div class="section-txt">
+          <p class="catch-copy"><span class="underline-yel">実名登録制</span><br>を採用</p>
+          <p class="desc">参加者の詳しい情報がわかるので<br>イベントの方向性が定まる</p>
+        </div>
+        <div class="section-img">
+          <img src="/images/top003.jpg" alt="" class="feature-img">
+        </div>
+      </div>
+    </div>
+    <!-- <div class="section case-study">
+        <h2 class="section-title">How to use</h2>
+    </div> -->
+
+  </main>
+  <footer>
+    <p class="copylight">©2020 株式会社ホロックス</p>
+  </footer>
+  <script>
+    $('body').on('click', '.open', function () {
+      $('.bg2').removeClass('display-none');
+    });
+
+    $('body').on('click', '.bg2', function () {
+      $('.bg2').addClass('display-none');
+    });
+  </script>
+</body>
+
+</html>

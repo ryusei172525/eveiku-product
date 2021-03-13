@@ -1,0 +1,458 @@
+@charset "UTF-8";
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+nav,
+ul,
+li {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+a:visited {
+  color: inherti;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+/*-----------------
+変数
+------------------*/
+/*-----------------
+@mixin
+------------------*/
+/*-----------------
+共通
+------------------*/
+html {
+  font-size: 62.5%;
+}
+
+header {
+  width: 100%;
+  height: 65px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1.7rem 1.7rem 2.0rem 1.3rem;
+}
+
+@media (min-width: 900px) {
+  header {
+    height: 80px;
+  }
+}
+
+.header-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 2.1rem;
+}
+
+.header-logo__icon {
+  display: inline-block;
+  height: 1px;
+  background-color: #707070;
+}
+
+@media (min-width: 900px) {
+  .header-logo {
+    font-size: 3rem;
+  }
+}
+
+.pc-nav {
+  display: none;
+  font-size: 2.2rem;
+}
+
+.pc-nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pc-nav li:not(:first-child) {
+  margin-left: 30px;
+}
+
+.pc-nav__btn {
+  min-width: 289px;
+  width: 33%;
+  display: block;
+  margin: 0 auto;
+  background-color: #E1A80E;
+  color: #FFFFFF;
+  border-radius: 1rem;
+  padding: 19px 39px;
+  padding: 10px 0;
+  min-width: 130px;
+  font-size: 2.2rem;
+}
+
+@media (min-width: 900px) {
+  .pc-nav {
+    display: inline-block;
+  }
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  left: -50vw;
+}
+
+.open {
+  width: 46px;
+  height: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.open span {
+  display: inline-block;
+  width: 100%;
+  height: 2px;
+  background-color: #707070;
+}
+
+@media (min-width: 900px) {
+  .open {
+    display: none;
+  }
+}
+
+aside {
+  min-width: 247px;
+  right: -250px;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  background: #ffffff;
+}
+
+aside li {
+  font-size: 2rem;
+  line-height: 3rem;
+  margin: 0 auto 0 30px;
+  padding-top: 7px;
+}
+
+aside li:first-child {
+  padding-top: 37px;
+}
+
+@media (min-width: 900px) {
+  aside {
+    display: none;
+  }
+}
+
+.close {
+  color: #707070;
+  padding: 17px 21px 0 196px;
+  font-size: 5rem;
+}
+
+@media (min-width: 900px) {
+  .close {
+    display: none;
+  }
+}
+
+input[type="checkbox"]:checked ~ aside {
+  right: 0;
+}
+
+.back {
+  display: none;
+}
+
+input[type="checkbox"]:checked ~ .back {
+  display: block;
+  top: 65px;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #171717;
+}
+
+.first-view {
+  background-color: #171717;
+}
+
+@media (min-width: 900px) {
+  .first-view__card {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+  }
+}
+
+.catch-copy {
+  color: #FFFFFF;
+  font-size: 2rem;
+  line-height: 4rem;
+  font-weight: bold;
+  min-width: 333px;
+  padding: 6rem 0 2rem 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .catch-copy {
+    font-size: 4rem;
+    line-height: 8rem;
+    padding: 12rem 0 0 3rem;
+    margin-bottom: 100px;
+  }
+}
+
+.catch-img {
+  width: 54%;
+  margin: 0 0 60px auto;
+}
+
+.catch-img img {
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .catch-img {
+    width: 30%;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.first-view__btn {
+  min-width: 289px;
+  width: 33%;
+  display: block;
+  margin: 0 auto;
+  background-color: #E1A80E;
+  color: #FFFFFF;
+  border-radius: 1rem;
+  padding: 19px 39px;
+}
+
+@media (min-width: 900px) {
+  .first-view__btn {
+    margin-top: 50px;
+    font-size: 1.8rem;
+  }
+}
+
+.link-block {
+  color: #fff;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 1.6rem;
+  padding: 86px 0 143px;
+}
+
+@media (min-width: 900px) {
+  .link-block {
+    font-size: 1.8rem;
+  }
+}
+
+.copylight {
+  text-align: center;
+  padding: 5px;
+}
+/*# sourceMappingURL=main.css.map */

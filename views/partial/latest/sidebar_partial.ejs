@@ -1,0 +1,22 @@
+<aside>
+    <ul>
+        <li class="<%- now =='home' && 'active'%>" onclick="location.href='/home'">ホーム</li>
+        <li class="<%- now=='hold' &&  'active' %>" onclick=" location.href='/holdEvent'">開催イベント</li>
+        <li class="<%- now=='my' && 'active' %>" onclick="location.href='/myEvent'">参加イベント</li>
+        <li class="<%- now =='config' && 'active' %>" onclick=" location.href='/myAccount'">アカウント設定</li>
+    </ul>
+</aside>
+
+<script>
+    var lastScrollTop = 0;
+    // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
+    document.addEventListener("scroll", function () { // or window.addEventListener("scroll"....
+        var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+        if (st > lastScrollTop) {
+            document.querySelector("aside").classList.add("down")
+        } else {
+            document.querySelector("aside").classList.remove("down")
+        }
+        lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+    }, false);
+</script>

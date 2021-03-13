@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="/stylesheets/san-event-search6.css" />
+  <link rel="stylesheet" href="/stylesheets/home.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <%- include('../partial/latest/head_partial',{key:'build-page',title:'build9',avatar: data.avatar, name:
+    data.name,style:"mypage",title:"イベント検索" }) %>
+
+</head>
+
+<body>
+  <div class="bg display-none"></div>
+  <%- include('../partial/latest/header_partial',{key:'build-page',title:'build9',avatar: data.avatar, name: data.name
+    }) %>
+
+    <!-- <main>
+    <div class="select-nav">
+      <div class="select-nav__wrap">
+        <p class="select-nav__title">おすすめから選ぶ</p>
+      </div>
+      <div class="select-nav__wrap">
+        <p class="select-nav__title">種類から選ぶ</p>
+      </div>
+      <div class="select-nav__wrap">
+        <p class="select-nav__title">開催期間で選ぶ</p>
+      </div>
+      <div class="select-nav__wrap">
+        <p class="select-nav__title">無料のテンプレート</p>
+      </div>
+      <div class="select-nav__wrap">
+        <p class="select-nav__title">人気のテンプレート</p>
+      </div>
+    </div> -->
+
+    <section class="select-event">
+      <div class="select-event-inner">
+        <p class="select-event-title">参加するイベントを選ぼう！</p>
+        <!-- <div class="serch-pc-flex">
+          <div class="serch-wrap">
+            <input type="text">
+            <p class="serch">検索</p>
+          </div>
+          <div class="sort-and-detail">
+            <p class="sort">表示順</p>
+            <p class="detail">詳細</p>
+          </div>
+        </div> -->
+        <form action="/search-event/mypage" method="POST">
+          <li class="search sp">
+            <input type="text" name="search">
+            <label>
+              <input type="submit" class="btn">
+              <img src="../images/eveiku_icon/search.png" width="25px">
+            </label>
+          </li>
+        </form>
+        <div class="event-cards event">
+          <% data.forEach((data)=> { %>
+            <%-
+              include('../partial/latest/article_partial',{title:data.title,url:data.url,desc:data.description,date:data.date,thumbnail:data.thumbnail,city:data.city})
+              %>
+              <% })%>
+        </div>
+      </div>
+    </section>
+    </main>
+    <script>
+      $('body').on('click', '.user-name', function () {
+        $('.modal').removeClass('display-none');
+        $('.bg').removeClass('display-none');
+      });
+
+      $('body').on('click', '.bg', function () {
+        $('.modal').addClass('display-none');
+        $('.bg').addClass('display-none');
+      });
+    </script>
+    <script src="/js/sample.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+html {
+  font-family: "M PLUS Rounded 1c";
+  /* font-size: 62.5%; */
+}
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+p {
+  text-align: center;
+  font-size: 2rem;
+}
+
+@media screen and (min-width: 960px) {
+  .sp {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  img {
+    width: 100%;
+  }
+}

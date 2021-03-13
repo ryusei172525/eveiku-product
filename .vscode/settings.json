@@ -1,0 +1,19 @@
+{
+    "liveServer.settings.port": 5501,
+    "files.associations": {
+        "*.ejs": "html"
+    },
+    "liveSassCompile.settings.excludeList": [
+
+        "**/node_modules/**",
+        ".vscode/**"
+    ],
+    "liveSassCompile.settings.autoprefix": [],
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "~/../../stylesheets"
+        }
+    ],
+}

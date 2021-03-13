@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<head lang="ja">
+    <%- include('../partial/latest/head_partial',{key:'build-page',title:'build9',avatar: data.avatar, name: data.name,
+        style:'-',title:"イベント検索"}) %>
+        <!-- ヘッダーのため -->
+        <!-- <link rel="stylesheet" href='/stylesheets/mypage.css'> -->
+        <link rel="stylesheet" href='/stylesheets/participant_management.css'>
+
+        <!-- <style>
+            main {
+                /* display: flex; */
+                margin: unset;
+                width: 100%;
+            }
+            body {
+                overflow-x: hidden;
+                background-color: #f0f2f5;
+            }
+            nav {
+                position: fixed;
+                bottom: 3rem;
+                margin-left: 3rem;
+                width: 15rem;
+            }
+            nav>ul {
+                display: flex;
+                flex-direction: column;
+            }
+            nav>ul>li {
+                margin-top: 4rem;
+                font-size: 2.5rem;
+            }
+            .title {
+                font-size: 3rem;
+                /* margin-left: 20rem; */
+                margin-bottom: 3rem;
+                width: calc(100% - 200px);
+            }
+            .container_content {
+                /* position: absolute; */
+                /* margin-left: 20rem; */
+                margin-bottom: 5rem;
+                width: calc(100% - 400px);
+                background: #fff;
+                padding: 2rem;
+                border-radius: 15px;
+            }
+            .container_content ul,
+            .container_content button {
+                display: flex;
+                /* justify-content: space-between; */
+                width: calc(100%);
+            }
+            .container_content ul>li {
+                width: calc(100% / 6);
+                text-align: left;
+            }
+            .head_content {
+                color: gray;
+                font-weight: bolder;
+                font-size: 1.6rem;
+                padding-bottom: 1rem;
+                border-bottom: 1px solid gray;
+            }
+            .container_content ul:not(.head_content) {
+                font-size: 2rem;
+                margin-top: 2rem;
+            }
+            .container_content ul:not(.head_content):nth-child(2n) {
+                padding: 1rem 0;
+                background-color: rgba(128, 128, 128, 0.13);
+            }
+            nav ul>li.active {
+                font-weight: bolder;
+            }
+            nav ul>li::before {
+                content: "";
+                border-left: 7px solid #f2ca1900;
+                padding: 0 0.5rem;
+            }
+            nav ul>li.active::before {
+                content: "";
+                border-left: 7px solid #F2CC19;
+                padding: 0 0.5rem;
+            }
+            nav ul>li:hover::before {
+                content: "";
+                border-left: 7px solid #f2ca196c;
+                padding: 0 0.5rem;
+                font-weight: 700;
+            }
+        </style> -->
+</head>
+
+<body>
+
+    <%- include('../partial/latest/header_partial',{key:'build-page',title:'build9',avatar: data.avatar, name: data.name
+        }) %>
+        <%- include('../partial/latest/sidebar_partial',{key:'build-page',title:'build9',avatar: data.avatar, name:
+            data.name,now:"hold" }) %>
+
+            <main class="manage-main">
+
+                <% if(data.content_offline.length> 0){ %>
+                    <h2 class="title">オフライン参加者:<%= data.content_offline.length %>人</h2>
+                    <div class="container_content">
+                        <% for(var i in data.content_offline){%>
+                            <div class="participant_info body_content">
+                                <% var obj=data.content_offline[i];%>
+                                    <!-- <p class="icon"> -->
+                                    <div class="icon">
+
+                                        <form action="/user-profile" method="post">
+                                            <input type="hidden" name="paraticipate_id" value="<%= obj.id %>">
+                                            <button>
+                                                <img src="<%= obj.avatar %>">
+                                            </button>
+                                        </form>
+                                        <!-- 本番 -->
+                                        <form method="get" action="http://eveiku.jp/message">
+                                        <!-- ローカル -->
+                                        <!-- <form method="get" action="http://localhost:3000/message"> -->
+                                            <button type="submit">
+                                                <input type="hidden" name="name" value="<%= obj.name %>">
+                                                <ul>
+                                                    <li>
+                                                        <img src="/images/eveiku_icon/inbox.png" alt="" width="40px"
+                                                            style="background-color: #f5f5f5;" class="message">
+                                                    </li>
+                                                    <li style="width:0;height: 0;visibility: hidden;font-size: 0;">
+                                                        <input name="id" value="<%= data.content_offline[i][" id"] %>">
+                                                    </li>
+                                                    <li style="width:0;height: 0;visibility: hidden;font-size: 0;">
+                                                        <input name="stream_id_array"
+                                                            value="<%= data.stream_id_array %>">
+                                                    </li>
+                                                    <li style="width:0;height: 0;visibility: hidden;font-size: 0;">
+                                                        <input name="participant_name_array"
+                                                            value="<%= data.participant_name_array %>">
+                                                    </li>
+                                                </ul>
+                                                <input type="hidden" name="mail" value="<%= obj.email %>">
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <!-- </p> -->
+                                    <%const getBirthday=e=>{const t=e,l=t.slice(0,4),a=t.slice(5,7),r=t.slice(8,10);var
+                                        c=new Date,n=new
+                                        Date(c.getFullYear(),a,r),s=c.getFullYear()-l;return c<n?s-1:s}; %>
+                                            <p class="name__card">
+                                                <%= obj.name %> <span class="birthday__card">
+                                                        <% const bd=getBirthday(obj.birthday) %>
+                                                            <% console.log(bd); %>
+                                                                (<%= bd %>)
+                                                    </span>
+                                            </p>
+                                            <div class="intro">
+                                                <p class="email">
+                                                    <%= obj.email %>
+                                                </p>
+                                                <!-- <p class="age">
+                                            <%=obj.age%>
+                                        </p>
+                                        <p class="gender">
+                                            <%=obj.gender%>
+                                        </p> -->
+                                                <p class="company">
+                                                    <span>所属</span>
+                                                    <%=obj.company%>
+                                                </p>
+                                                <p class="university">
+                                                    <span>出身</span>
+                                                    <%=obj.university%>
+                                                </p>
+                                                <p class="industory">
+                                                    <span>業種</span>
+                                                    <%=obj.industory%>
+                                                </p>
+                                                <p class="occupation">
+                                                    <span>職種</span>
+                                                    <%=obj.occupation%>
+                                                </p>
+                                            </div>
+                            </div>
+                            <%}%>
+                                <%}else{%>
+                                    <p class="title">オフラインでの参加者はいません</p>
+                                    <% } %>
+                    </div>
+                    <% if(data.content_online.length> 0){ %>
+                        <h2 class="title">オンライン参加者:<%= data.content_online.length %> 人</h2>
+                        <div class="container_content">
+                            <% for(var i in data.content_online){%>
+                                <% var obj=data.content_online[i];%>
+                                    <div class="participant_info body_content">
+                                        <!-- <p class="icon"> -->
+                                        <div class="icon">
+                                            <form action="/user-profile" method="post">
+                                                <input type="hidden" name="paraticipate_id" value="<%= obj.id %>">
+                                                <button>
+                                                    <img src="<%= obj.avatar %>">
+                                                </button>
+                                            </form>
+                                            <!-- 本番 -->
+                                            <form method="get" action="http://eveiku.jp/message">
+                                            <!-- ローカル -->
+                                            <!-- <form method="get" action="http://localhost:3000/message"> -->
+                                                <button type="submit">
+                                                    <input type="hidden" name="name" value="<%= obj.name %>">
+                                                    <ul>
+                                                        <li>
+                                                            <img src="/images/eveiku_icon/inbox.png" alt="" width="40px"
+                                                                style="background-color: #f5f5f5;" class="message">
+                                                        </li>
+                                                        <li style="width:0;height: 0;visibility: hidden;font-size: 0;">
+                                                            <input name="id" value="<%= data.content_online[i][" id"]
+                                                                %>">
+                                                        </li>
+                                                        <li style="width:0;height: 0;visibility: hidden;font-size: 0;">
+                                                            <input name="stream_id_array"
+                                                                value="<%= data.stream_id_array %>">
+                                                        </li>
+                                                        <li style="width:0;height: 0;visibility: hidden;font-size: 0;">
+                                                            <input name="participant_name_array"
+                                                                value="<%= data.participant_name_array %>">
+                                                        </li>
+                                                    </ul>
+                                                    <input type="hidden" name="mail" value="<%= obj.email %>">
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <!-- </p> -->
+                                        <%const getBirthday=e=>{const
+                                            t=e,l=t.slice(0,4),a=t.slice(5,7),r=t.slice(8,10);var
+                                            c=new Date,n=new
+                                            Date(c.getFullYear(),a,r),s=c.getFullYear()-l;return c<n?s-1:s}; %>
+                                                <p class="name__card">
+                                                    <%= obj.name %> <span class="birthday__card">
+                                                            <% const bd=getBirthday(obj.birthday) %>
+                                                                <% console.log(bd); %>
+                                                                    (<%= bd %>)
+                                                        </span>
+                                                </p>
+                                                <div class="intro">
+                                                    <p class="email">
+                                                        <%= obj.email %>
+                                                    </p>
+                                                    <!-- <p class="age">
+                                                                                <%=obj.age%>
+                                                                            </p>
+                                                                            <p class="gender">
+                                                                                <%=obj.gender%>
+                                                                            </p> -->
+                                                    <p class="company">
+                                                        <span>所属</span>
+                                                        <%=obj.company%>
+                                                    </p>
+                                                    <p class="university">
+                                                        <span>出身</span>
+                                                        <%=obj.university%>
+                                                    </p>
+                                                    <p class="industory">
+                                                        <span>業種</span>
+                                                        <%=obj.industory%>
+                                                    </p>
+                                                    <p class="occupation">
+                                                        <span>職種</span>
+                                                        <%=obj.occupation%>
+                                                    </p>
+                                                </div>
+                                                <%}%>
+                                                    <%}else{%>
+                                                        <p class="title">オンラインでの参加者はいません</p>
+                                                        <% } %>
+                                    </div>
+
+
+
+            </main>
+            <!-- 消さないで!!! -->
+            <!-- <script>
+                const getBirthday = (bd) => {
+                    const birthday = bd;
+                    const year = birthday.slice(0, 4);
+                    const month = birthday.slice(5, 7);
+                    const day = birthday.slice(8, 10);
+                    var today = new Date();
+                    var thisYearBirthday =
+                        new Date(today.getFullYear(), month, day);
+                    var age = today.getFullYear() - year;
+                    const nowage = (today < thisYearBirthday) ? age - 1 : age; return nowage;
+                }
+            </script> -->
+</body>

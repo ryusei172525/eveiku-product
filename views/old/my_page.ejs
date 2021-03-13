@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href='/stylesheets/mypage.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <title></title>
+</head>
+
+<body>
+    <div class="bg display-none"></div>
+    <header>
+        <div class="header-logo">
+            <a href="/home">
+                <img src="../images/eveiku_icon/eveiku_icon.png" width="50px" class="eveiku_logo">
+                <h1 class="logo">イベイク</h1>
+            </a>
+        </div>
+
+        <!-- 🍔 -->
+        <input id="menu" type="checkbox">
+        <label for="menu" class="open">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <!-- <label for="menu" class="back"></label> -->
+
+        <!-- 🍔 -->
+
+        <nav class="pc-nav">
+            <ul class="menu">
+                <form action="/search-event/mypage" method="POST">
+                    <li class="search">
+                        <input type="text" name="search">
+                        <label>
+                            <input type="submit" class="btn">
+                            <img src="../images/eveiku_icon/search.png" width="25px">
+                        </label>
+                    </li>
+                </form>
+                <li class="icon">
+                    <%# if(data.icon===null){ %>
+                        <a href="mypage"><img src="<%= data.avatar %>" alt="" width="35px" height="35px"></a>
+                        <%# } %>
+                </li>
+                <li class="user-name">
+                    <%= data.name%>
+                </li>
+                <li><a href="/build-page" class="make-event">作成</a></li>
+            </ul>
+            <ul class="modal display-none">
+                <li><a href="/home">アカウント設定</a></li>
+                <li><a href="/">ログアウト</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <aside class="display-none">
+            <ul>
+                <li id="syu">開催イベント</li>
+                <li id="san">参加イベント</li>
+                <li class="active" id="config">アカウント設定</li>
+            </ul>
+        </aside>
+        <div class="bg2 display-none"></div>
+        <section class="syu event-list display-none">
+            <div class="header">
+                <h2 class="title">イベント一覧</h2>
+                <a href="/build-page" class="make-btn">
+                    <button>＋新しいイベントを作る</button>
+                </a>
+            </div>
+            <div class="list">
+                <ul>
+                    <% if (data.my_event.length===0) { %>
+                        <h1 class="none-events">現在主催しているイベントはありません</h1>
+                        <% } else { %>
+                            <% for (var i=0; i < data.my_event.length; i++) { %>
+                                <li class="item">
+                                    <div class="syu-event event">
+                                        <div class="txt">
+                                            <a href="/public/<%= data.my_event[i].url %>">
+                                                <h3>
+                                                    <%= data.my_event[i].title %>
+                                                </h3>
+                                            </a>
+                                            <p class="time">作成日時 :
+                                                <% if(data.my_event[i].createdAt===null){ %>
+                                                    日時なし
+                                                    <% }else{ %>
+                                                        <%= data.my_event[i].createdAt.getFullYear() %>年<%=
+                                                                data.my_event[i].createdAt.getMonth() + 1 %>月<%=
+                                                                    data.my_event[i].createdAt.getDate() %>日
+                                                                    <% } %>
+                                            </p>
+                                        </div>
+                                        <ul>
+                                            <a onclick="location.href='/build-page?id=<%= data.my_event[i].id%>'">
+                                                <li><img src="../images/eveiku_icon/pen.png" alt="" width="40px"></li>
+                                            </a>
+                                            <a href="/mypage/chart">
+                                                <li><img src="../images/eveiku_icon/chart.png" alt="" width="40px"></li>
+                                            </a>
+                                            <a onclick="location.href='/management/sample/<%= data.my_event[i].id%>'">
+                                                <li><img src="../images/eveiku_icon/user.png" alt="" width="40px"></li>
+                                            </a>
+
+                                            <!-- 削除ボタン -->
+                                            <form action="/mypage/delete/<%= data.my_event[i].id%>" method="post"
+                                                style=" margin-top: -25px;">
+                                                <input type="submit" style="visibility:hidden;">
+                                                <li><img src="../images/eveiku_icon/delete.png" alt="" width="40px">
+                                                </li>
+                                            </form>
+                                            <!-- 削除ボタンここまで -->
+
+
+
+                                        </ul>
+                                    </div>
+                                </li>
+                                <% } %>
+                                    <% } %>
+                </ul>
+            </div>
+        </section>
+        <section class="san event-list display-none">
+            <div class="header">
+                <h2 class="title">イベント一覧</h2>
+                <a href="/search-event" class="make-btn">
+                    <button>＋新しいイベントを探す</button>
+                </a>
+            </div>
+            <div class="list">
+                <ul>
+                    <% if (data.join_event.length===0) { %>
+                        <h1 class="none-events">現在参加しているイベントはありません</h1>
+                        <% } else { %>
+                            <% for (var i=0; i < data.join_event.length; i++) { %>
+                                <li class="item">
+                                    <div class="syu-event event">
+                                        <div class="txt">
+                                            <a href="/public/<%= data.join_event[i].url %>">
+                                                <h3>
+                                                    <%= data.join_event[i].title %>
+                                                </h3>
+                                            </a>
+                                            <p class="time">イベント日時 :
+                                                <% if(data.join_event[i].date===null){ %>
+                                                    日時なし
+                                                    <% }else{ %>
+                                                        <%= data.join_event[i].date.getFullYear() %>年<%=
+                                                                data.join_event[i].date.getMonth() + 1%>月<%=
+                                                                    data.join_event[i].date.getDate() %>日
+                                                                    <% } %>
+                                            </p>
+                                        </div>
+                                        <ul>
+                                            <form action="/tickets/<%= data.join_event[i].id %>">
+                                                <label>
+                                                    <input class="goticket" type="submit">
+                                                    <li><img src="../images/eveiku_icon/ticket(1).png" alt=""
+                                                            width="40px"></li>
+                                                </label>
+                                            </form>
+                                            <!-- 本番 -->
+                                            <form method="get" action="http://eveiku.jp/message"></form>
+                                            <!-- ローカル -->
+                                            <!-- <form method="get" action="http://localhost:3000/message"> -->
+                                                <label>
+                                                    <input class="goticket" type="submit">
+                                                    <li><img src="../images/eveiku_icon/inbox.png" alt="" width="40px">
+                                                    </li>
+                                                </label>
+                                            </form>
+                                            <!-- イベント参加取り消し -->
+                                            <form action="myEvent/cancel/<%= data.join_event[i].id %>" method="post"
+                                                style=" margin-top: -25px;">
+                                                <a href="">
+                                                    <input type="submit" style="visibility:hidden;">
+                                                    <li class="close-icon"><img src="../images/eveiku_icon/close.png"
+                                                            alt="" width="30px"></li>
+                                                </a>
+                                            </form>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <% } %>
+                                    <% } %>
+                </ul>
+            </div>
+        </section>
+        <section class="config event-list">
+
+            <form action="/config" method="POST" enctype="multipart/form-data">
+                <div class="config-inner">
+                    <div class="left">
+                        <div class="icon">
+                            <div class="icon-config">
+                                <img src="<%= data.avatar %>" alt="" width="200px" height="200px">
+                            </div>
+                            <!-- <form action="/config" method="POST"> -->
+                            <label>
+                                <h3 class="icon-config-btn">アイコン変更</h3>
+                                <input type="file" name="icon" accept=".png, .jpg, .jpeg" class="img-config">
+                            </label>
+                            <!-- <input type="submit" class="icon-submit"> -->
+                            <!-- </form> -->
+                        </div>
+                        <div class="intro">
+                            <h2>自己紹介</h2>
+                            <textarea name="bio" cols="30" rows="10"><%= data.bio %></textarea>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <dl>
+                            <dt>氏名</dt>
+                            <dd class="name">
+                                <input type="text" name="name" value="<%= data.name %>">
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>生年月日</dt>
+                            <dd class="birthday">
+                                <input type="date" name="birthday" value="<%= data.birthday %>">
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>性別</dt>
+                            <dd>
+                                <select name="gender" class="gender" required>
+                                    <option hidden>性別</option>
+                                    <option value="男性">男性</option>
+                                    <option value="女性">女性</option>
+                                    <option value="未回答">未回答</option>
+                                </select>
+                            </dd>
+                        </dl>
+                        <script>
+
+                        </script>
+                        <dl>
+                            <dt>メールアドレス</dt>
+                            <dd>
+                                <input type="text" name="email" value="<%= data.email %>">
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>職種</dt>
+                            <dd>
+                                <input type="text" name="occupation" value="<%= data.occupation %>">
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>業種</dt>
+                            <dd>
+                                <select name="industry" class="industry" required>
+                                    <option value="" hidden>業種</option>
+                                    <option value=" PMプロヂューサーディレクター">PM・プロヂューサー・ディレクター</option>
+                                    <option value="マーケティングPR">マーケティング・PR</option>
+                                    <option value="デザイナー">デザイナー</option>
+                                    <option value="コーポレート">コーポレート</option>
+                                    <option value="経営CxO">経営・CxO</option>
+                                    <option value="事業開発">事業開発</option>
+                                    <option value="セールスカスタマーサクセス">セールス・カスタマーサクセス</option>
+                                    <option value="コンサルティング">コンサルティング</option>
+                                    <option value="編集ライティング">編集・ライティング</option>
+                                    <option value="投資家">投資家</option>
+                                    <option value="学生">学生</option>
+                                    <option value="その他">その他</option>
+                                </select>
+                            </dd>
+                        </dl>
+
+
+                        <dl>
+                            <dt>出身大学</dt>
+                            <dd>
+                                <input type="text" name="university" value="<%= data.university %>">
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>お勤め先</dt>
+                            <dd>
+                                <input type="text" name="company" value="<%= data.company %>" placeholder="クリックして入力">
+                            </dd>
+                        </dl>
+                        <input type="submit" value="変更を保存" class="config-btn">
+
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script>
+        const initialGendar = "<%= data.gender %>";
+        const targetGendar = document.querySelectorAll(".gender > option");
+        for (let i of targetGendar) if (i.value == initialGendar) i.selected = true;
+
+        const initialIndustry = "<%= data.industry %>";
+        console.log(initialIndustry)
+        const targetIndustry = document.querySelectorAll(".industry > option");
+        for (let i of targetIndustry) if (i.value == initialIndustry) i.selected = true;
+        $('body').on('click', '#syu', function () {
+            $('#syu').addClass('active');
+            $('#san').removeClass('active');
+            $('#config').removeClass('active');
+            $('.syu').removeClass('display-none');
+            $('.san').addClass('display-none');
+            $('.config').addClass('display-none');
+        });
+        $('body').on('click', '#san', function () {
+            $('#syu').removeClass('active');
+            $('#san').addClass('active');
+            $('#config').removeClass('active');
+            $('.san').removeClass('display-none');
+            $('.syu').addClass('display-none');
+            $('.config').addClass('display-none');
+        });
+        $('body').on('click', '#config', function () {
+            $('#syu').removeClass('active');
+            $('#san').removeClass('active');
+            $('#config').addClass('active');
+            $('.config').removeClass('display-none');
+            $('.san').addClass('display-none');
+            $('.syu').addClass('display-none');
+        });
+
+        $('body').on('click', '.user-name', function () {
+            $('.modal').removeClass('display-none');
+            $('.bg').removeClass('display-none');
+        });
+
+        $('body').on('click', '.bg', function () {
+            $('.modal').addClass('display-none');
+            $('.bg').addClass('display-none');
+        });
+
+        $('body').on('click', '.open', function () {
+            $('aside').removeClass('display-none');
+            $('.bg2').removeClass('display-none');
+        });
+
+        $('body').on('click', '.bg2,li', function () {
+            $('aside').addClass('display-none');
+            $('.bg2').addClass('display-none');
+        });
+    </script>
+
+</body>
+
+</html>

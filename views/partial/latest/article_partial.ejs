@@ -1,0 +1,20 @@
+<article>
+    <!-- <img src="" alt="" width="200px"> -->
+    <div style="background-image: url('<%= thumbnail %>');">
+        <!-- <p><a href="/public/<%= url %>">詳細はこちら</a></p> -->
+    </div>
+    <h4>
+        <%= title %>
+    </h4>
+    <p>開催日時:
+        <% if(date===null){ %>
+            日時なし
+            <% }else{ %>
+                <%= date.getFullYear() %>年<%= date.getMonth() + 1%>月
+                        <%= date.getDate() %>日
+                            <% } %>
+    </p>
+    <p>開催場所:<%= city %>
+    </p>
+    <p> <a href="/public/<%= url %>">詳細を見る</a> </p>
+</article>

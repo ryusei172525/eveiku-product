@@ -1,0 +1,12 @@
+article a {
+  text-decoration: none;
+  color: unset;
+}
+
+@media (max-width: 960px) {
+  main {
+    margin-left: initial;
+    width: initial;
+  }
+}
+/*# sourceMappingURL=organized-event.css.map */

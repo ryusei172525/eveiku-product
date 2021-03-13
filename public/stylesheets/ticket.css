@@ -1,0 +1,168 @@
+body {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: unset;
+  margin: unset;
+  padding: unset;
+  width: 100%;
+}
+
+html {
+  font-size: 1vw;
+}
+
+body {
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.ticket {
+  position: relative;
+  width: 100vw;
+  /* height: 37.82383rem; */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: solid 1px gray;
+}
+
+.bg {
+  width: 100%;
+  display: flex;
+}
+
+main {
+  padding-top: 1.98618rem;
+  padding-left: 1.81347rem;
+  width: 65%;
+}
+
+main .top {
+  border-top: dotted 5px #7880cb;
+  border-bottom: dotted 5px #7880cb;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 38.42832rem 1fr;
+  grid-template-columns: 38.42832rem 1fr;
+  grid-template-areas:
+    "a b"
+    "a c";
+}
+
+main .top .left {
+  font-size: 2.07254rem;
+  margin-top: 2.07254rem;
+}
+
+main .logo {
+  font-size: 12.95337rem;
+  color: #7880cb;
+  width: 38.42832rem;
+}
+
+main .subtitle {
+  font-size: 2.50432rem;
+  margin-top: 0.86356rem;
+}
+
+main .bottom {
+  /* position: absolute; */
+  bottom: 0;
+  font-size: 1.38169rem;
+}
+
+aside {
+  /* position: absolute; */
+  color: whitesmoke;
+  /* right: 0;
+    top: 0; */
+  padding-top: 4.40415rem;
+  padding-left: 2.76339rem;
+  padding-right: 2.76339rem;
+  height: 100%;
+  width: 35%;
+  background-color: black;
+  overflow-x: hidden;
+}
+
+aside .logo {
+  font-size: 4.74957rem;
+  color: #7880cb;
+}
+
+aside .category,
+aside .price {
+  font-size: 2.07254rem;
+}
+
+aside .bottom {
+  /* position: absolute; */
+  /* bottom: 0; */
+  margin-bottom: 2.67703rem;
+}
+
+aside .date {
+  font-size: 2.07254rem;
+  border-bottom: solid 1px whitesmoke;
+}
+
+aside .organized {
+  margin-top: 0.86356rem;
+}
+
+aside .organized,
+aside .venue {
+  font-size: 1.38169rem;
+}
+/*# sourceMappingURL=ticket.css.map */
+
+.right {
+  width: 100%;
+}
+
+body > div:not(.ticket) {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+body > div:not(.ticket) p {
+  font-size: 1.5rem;
+}
+body > div:not(.ticket) button {
+  margin-top: 2rem;
+  width: 15rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+  background-color: #f2cc19;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+}
+
+body > div:not(.ticket) button:hover {
+  background-color: #e4d17d;
+}

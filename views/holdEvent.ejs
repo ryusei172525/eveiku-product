@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <%- include('./partial/latest/head_partial',{key:'build-page',title:'build9',avatar: data.avatar, name:
+        data.name,style:"holdEvent",title:"開催イベント" }) %>
+
+</head>
+
+<body>
+
+    <%- include('./partial/latest/header_partial',{key:'build-page',title:'build9',avatar: data.avatar, name: data.name
+        }) %>
+        <%- include('./partial/latest/sidebar_partial',{key:'build-page',title:'build9',avatar: data.avatar, name:
+            data.name,now:"hold" }) %>
+            <main>
+                <section class="syu event-list">
+                    <div class="header">
+                        <h2 class="title">開催イベント一覧</h2>
+                        <a href="/build-page" class="make-btn">
+                            <button>＋新しいイベントを作る</button>
+                        </a>
+                    </div>
+                    <div class="list">
+                        <ul>
+                            <% if (data.my_event.length===0) { %>
+                                <h1 class="none-events">現在主催しているイベントはありません</h1>
+                                <% } else { %>
+                                    <% for (var i=0; i < data.my_event.length; i++) { %>
+                                        <li class="item">
+                                            <div class="syu-event event">
+                                                <div class="txt">
+                                                    <a href="/public/<%= data.my_event[i].url %>">
+                                                        <h3>
+                                                            <%= data.my_event[i].title %>
+                                                        </h3>
+                                                    </a>
+                                                    <p class="time">作成日時 :
+                                                        <% if(data.my_event[i].createdAt===null){ %>
+                                                            日時なし
+                                                            <% }else{ %>
+                                                                <%= data.my_event[i].createdAt.getFullYear() %>年<%=
+                                                                        data.my_event[i].createdAt.getMonth() + 1 %>
+                                                                        月<%= data.my_event[i].createdAt.getDate() %>
+                                                                            日
+                                                                            <% } %>
+                                                    </p>
+                                                </div>
+                                                <ul>
+                                                    <a
+                                                        onclick="location.href='/build-page?id=<%= data.my_event[i].id%>'">
+                                                        <li><img src="../images/eveiku_icon/pen.png" alt=""
+                                                                width="40px"></li>
+                                                    </a>
+                                                    <a href="/chart">
+                                                        <li><img src="../images/eveiku_icon/chart.png" alt=""
+                                                                width="40px"></li>
+                                                    </a>
+                                                    <a
+                                                        onclick="location.href='/management/sample/<%= data.my_event[i].id%>'">
+                                                        <li><img src="../images/eveiku_icon/user.png" alt=""
+                                                                width="40px"></li>
+                                                    </a>
+
+                                                    <!-- 削除ボタン -->
+                                                    <form action="/holdEvent/delete/<%= data.my_event[i].id %>"
+                                                        method="post">
+                                                        <li class="remove-btn"
+                                                            data-name="<%= data.my_event[i].title %>">
+                                                            <input type="string" name="event_id"
+                                                                value="<%= data.my_event[i].id %>"
+                                                                style="display: none;">
+                                                            <img src="/images/eveiku_icon/delete.png" alt=""
+                                                                width="40px">
+                                                            <button type="submit" value="削除"
+                                                                style="display: none;"></button>
+                                                        </li>
+                                                    </form>
+                                                    <!-- 削除ボタンここまで -->
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <% } %>
+                                            <% } %>
+                        </ul>
+                    </div>
+                </section>
+                <div class="confirmation-bg display-none"></div>
+                <div class="confirmation display-none">
+                    <div class="confirmation-inner">
+                        <div>
+                            <h1 class="confirmation-text">本当にイベントを削除しますか？</h1>
+                            <p class="remove-name"></p>
+                            <div>
+                                <p class="confirmation-btn">削除</p>
+                                <p class="confirmation-close">キャンセル</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+            <%- include('./partial/latest/footer_partial') %>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                <script>
+
+                    let remove_num;
+                    $('body').on('click', '.remove-btn', function () {
+                        remove_num = $(this);
+                        console.log(remove_num.data("name"));
+                        $('.confirmation').removeClass('display-none');
+                        $('.confirmation-bg').removeClass('display-none');
+                        $(".remove-name").text(remove_num.data("name"));
+                        $('body').on('click', '.confirmation-btn', function () {
+                            remove_num.children("button").trigger("click");
+                        });
+                    });
+                    $('body').on('click', '.confirmation-bg,.confirmation-close', function () {
+                        $('.confirmation').addClass('display-none');
+                        $('.confirmation-bg').addClass('display-none');
+                    });
+
+                // $('body').on('click', '.open', function () {
+                //     $('aside').removeClass('display-none');
+                //     $('.bg').removeClass('display-none');
+                // });
+
+
+                // $('body').on('click', '.user-name', function () {
+                //     $('.modal').removeClass('display-none');
+                //     $('.bg').removeClass('display-none');
+                // });
+
+                // $('body').on('click', '.bg', function () {
+                //     $('.modal').addClass('display-none');
+                //     $('.bg').addClass('display-none');
+                // });
+
+                </script>
+</body>
+
+</html>

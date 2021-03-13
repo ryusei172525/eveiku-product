@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <%- include('./partial/latest/head_partial',{key:'build-page',title:'build9',avatar: data.avatar, name:
+        data.name,style:"home" ,title:"ホーム"}) %>
+</head>
+
+<body>
+
+    <%- include('./partial/latest/header_partial',{key:'build-page',title:'build9',avatar: data.avatar, name: data.name
+        }) %>
+        <%- include('./partial/latest/sidebar_partial',{key:'build-page',title:'build9',avatar: data.avatar, name:
+            data.name,now:"home" }) %>
+            <main>
+
+                <section class="profile">
+                    <div class="container_icon">
+                        <img src="<%= data.avatar %>" alt="アイコン画像">
+                    </div>
+                    <div class="container_text">
+                        <div class="name">
+                            <h2>
+                                <%= data.name %>
+                            </h2>
+                            <!-- <p>(<span style="color: blue;">22</span>)</p> -->
+                        </div>
+
+
+                        <div class="status">
+                            <dl>
+                                <dt>所属</dt>
+                                <dd>
+                                    <%= data.company %>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>出身</dt>
+                                <dd>
+                                    <%= data.university %>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>業種</dt>
+                                <dd>
+                                    <%= data.industry %>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>職種</dt>
+                                <dd>
+                                    <%= data.occupation %>
+                                </dd>
+                            </dl>
+
+                        </div>
+                    </div>
+                    <div class="container_intro">
+                        <p>
+                            <%= data.bio %>
+                        </p>
+                    </div>
+
+                </section>
+
+                <div class="event">
+                    <section>
+                        <h2>参加イベント</h2>
+                        <% if (data.join_event.length===0) { %>
+                            <h1 class="none-events">現在参加しているイベントはありません</h1>
+                            <% }else { %>
+                                <section>
+                                    <% var today=new Date(Date.now()); %>
+
+                                        <h3>参加予定のイベント</h3>
+                                        <div class="container_event">
+                                            <% console.log(data) %>
+                                                <% for (var i=0; i < data.join_event.length; i++) { %>
+                                                    <% if(today < data.join_event[i].date) { %>
+                                                        <%- include('./partial/latest/article_partial',{title:data.join_event[i].title,url:data.join_event[i].url,desc:data.join_event[i].description,date:data.join_event[i].date,thumbnail:data.join_event[i].thumbnail,city:data.join_event[i].city})
+                                                            %>
+                                                            <% } %>
+                                                                <% } %>
+                                        </div>
+                                </section>
+                                <section>
+                                    <h3>参加したイベント</h3>
+                                    <div class="container_event">
+                                        <% for (var i=0; i < data.join_event.length; i++) { %>
+                                            <% if(today> data.join_event[i].date) { %>
+                                                <%- include('./partial/latest/article_partial',{title:data.join_event[i].title,url:data.join_event[i].url,desc:data.join_event[i].description,date:data.join_event[i].date,thumbnail:data.join_event[i].thumbnail,city:data.join_event[i].city})
+                                                    %>
+                                                    <% } %>
+                                                        <% } %>
+                                    </div>
+                                </section>
+
+                                <% } %>
+                    </section>
+
+                    <section>
+                        <h2>開催イベント</h2>
+                        <% if (data.my_event.length===0) { %>
+                            <h1 class="none-events">現在開催しているイベントはありません</h1>
+                            <% }else { %>
+                                <section>
+                                    <% var today=new Date(Date.now()); %>
+
+                                        <h3>開催予定のイベント</h3>
+                                        <div class="container_event">
+                                            <% for (var i=0; i < data.my_event.length; i++) { %>
+                                                <% if(today < data.my_event[i].date) { %>
+                                                    <%- include('./partial/latest/article_partial',{title:data.my_event[i].title,url:data.my_event[i].url,desc:data.my_event[i].description,date:data.my_event[i].date,thumbnail:data.my_event[i].thumbnail,city:data.my_event[i].city})
+                                                        %>
+                                                        <% } %>
+                                                            <% } %>
+                                        </div>
+                                </section>
+                                <section>
+                                    <h3>開催済みイベント</h3>
+                                    <div class="container_event">
+                                        <% for (var i=0; i < data.my_event.length; i++) { %>
+                                            <% if(today> data.my_event[i].date) { %>
+                                                <%- include('./partial/latest/article_partial',{title:data.my_event[i].title,url:data.my_event[i].url,desc:data.my_event[i].description,date:data.my_event[i].date,thumbnail:data.my_event[i].thumbnail,city:data.my_event[i].city})
+                                                    %>
+                                                    <% } %>
+                                                        <% } %>
+                                    </div>
+                                </section>
+
+                                <% } %>
+                    </section>
+                </div>
+            </main>
+            <%- include('./partial/latest/footer_partial') %>
+</body>
+
+</html>

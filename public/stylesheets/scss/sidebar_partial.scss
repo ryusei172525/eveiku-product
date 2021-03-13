@@ -1,0 +1,78 @@
+@import "./variable.scss";
+
+aside {
+  width: 20rem;
+  padding-left: 3rem;
+  position: fixed;
+  top: 10rem;
+  @include sp {
+    width: 100%;
+    top: 5rem;
+    padding-left: 0;
+    background-color: $bg_white;
+    transition: all 0.7s;
+    &.down {
+      top: 1rem;
+    }
+  }
+}
+
+aside ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 2rem;
+  @include sp {
+    display: flex;
+    font-size: 1.5rem;
+  }
+}
+
+aside ul li {
+  // width: 60%;
+  padding: 2rem 0rem;
+  font-weight: bold;
+  transition: all 0.3s;
+  @include sp {
+    text-align: center;
+    padding: 1.3rem 0 0.5rem 0;
+  }
+}
+
+aside ul li:hover {
+  background-color: #f2ca192f;
+  border-radius: 10px;
+}
+
+aside ul li::before {
+  content: "";
+  border-left: 10px solid #f2ca1900;
+  padding-left: 2rem;
+  @include sp {
+    border-left: initial;
+    padding-left: 0;
+  }
+}
+
+aside ul li.active::before {
+  border-left: 10px solid #f2cc19;
+  @include sp {
+    border-left: initial;
+  }
+}
+
+@include sp {
+  aside ul li {
+    border-left: initial;
+    border-bottom: 3px solid #f2ca1900;
+    padding-left: 0;
+    &.active {
+      border-bottom: 3px solid #f2ca19;
+    }
+  }
+}
+
+@include sp {
+  aside > ul > li:last-of-type {
+    display: none;
+  }
+}

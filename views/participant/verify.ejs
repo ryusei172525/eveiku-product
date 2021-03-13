@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>チケット確認 | イベイク</title>
+  <style>
+    html {
+      font-size: 62.5%;
+    }
+
+    body {
+      margin: 0;
+      background: #fbfbfbfb;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: bolder;
+      margin: 0;
+      padding: 1rem;
+    }
+
+    h1 a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: unset;
+    }
+
+    h1 img {
+      height: 4rem;
+      margin: 0 1rem;
+    }
+
+    header {
+      background-color: white;
+      border-bottom: 1px solid black;
+    }
+
+    h2 {
+      margin: auto;
+      text-align: center;
+      font-size: 3rem;
+      margin-top: 5rem;
+    }
+
+    main {
+      margin: auto;
+      padding: 2rem 7rem;
+      background-color: white;
+      border-radius: 15px;
+      max-width: 100rem;
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+    }
+
+    .container_about>div {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+    }
+
+    .container_about>div>p {
+      display: flex;
+      align-items: center;
+    }
+
+
+    /* 見出し */
+    .container_about>div>p:first-of-type {
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    /* 本文 */
+    .container_about>div:not(:last-child)>p:last-of-type {
+      font-size: 1.8rem;
+      font-weight: bolder;
+    }
+
+    /* チケット */
+    .container_about>div>div>p:nth-of-type(2n) {
+      font-size: 1.8rem;
+      font-weight: bolder;
+      margin-top: 0;
+    }
+
+    .container_about>div>div>p:nth-of-type(2n+1) {
+      margin-bottom: 0;
+    }
+
+    .container_ticket>p {
+      text-align: center;
+      font-size: 2rem;
+      color: #333;
+    }
+
+    .container_ticket>div {
+      font-size: 1.8rem;
+      margin-left: 3rem;
+      padding: 0 0.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-bottom: 1px solid black;
+    }
+
+    .container_ticket>div>p {
+      display: flex;
+      align-items: center;
+      margin: 0.8rem;
+    }
+
+    .container_ticket .value {
+      font-weight: bold;
+      color: white;
+      justify-content: center;
+      background-color: #FFD200;
+      border-radius: 50px;
+      padding: 1rem;
+      width: 100%;
+      margin: 0.8rem;
+    }
+
+    .wrapper.form {
+      display: flex;
+    }
+
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      padding: 0;
+      appearance: none;
+    }
+
+    .conteiner_btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .conteiner_btn>a {
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+
+    .btn_join {
+      margin-top: 2rem;
+      font-size: 3rem;
+      font-weight: bolder;
+      color: white!important;
+      padding: 1rem 3rem;
+      background-color: #FFD200;
+      width: 25rem;
+      border-radius: 51px;
+    }
+
+    /*popup表示させたいコンテンツのレイアウトと位置*/
+    #popup {
+      width: 30%;
+      line-height: 100px;
+      background: #000;
+      padding: 0 4%;
+      box-sizing: border-box;
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    label {
+      display: block;
+    }
+
+    /*ボタンの装飾*/
+    label span {
+      display: block;
+      background-color: #01b6ed;
+      color: #fff;
+      width: 200px;
+      line-height: 40px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    label span:hover {
+      cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    /*checkboxがcheckの状態になったらpopupを表示させる*/
+    input[type="checkbox"]:checked+#popup {
+      display: block;
+    }
+
+    .contents .Tittle {
+      margin-bottom: 0.5em;
+      padding-bottom: 0.25em;
+      font-size: 2em;
+      font-weight: bold;
+      line-height: 1.3;
+      border-bottom: 1px solid #dedede;
+    }
+
+    .contents p {
+      margin-bottom: 1em;
+      line-height: 1.7;
+    }
+
+    .popupCheck {
+      display: none;
+    }
+
+    label {
+      cursor: pointer;
+    }
+
+    .button {
+      text-align: center;
+    }
+
+    .button label {
+      display: inline-block;
+      padding: 0.8em 4.0em;
+      margin: 2.0em;
+      color: #FFFFFF;
+      font-size: 20px;
+      background-color: #29304b;
+      text-decoration: none;
+      border-radius: 5px;
+      -webkit-transition: 0.3s cubic-bezier(1, 0, 0, 1);
+      transition: 0.3s cubic-bezier(1, 0, 0, 1);
+      -webkit-transition-property: background-color, -webkit-box-shadow;
+      transition-property: background-color, -webkit-box-shadow;
+      transition-property: background-color, box-shadow;
+      transition-property: background-color, box-shadow, -webkit-box-shadow;
+      -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .button label:hover {
+      color: #FFFFFF;
+      background-color: #404b75;
+      -webkit-box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .popupWrap,
+    .popupBg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      z-index: 10;
+    }
+
+    .popupWrap {
+      opacity: 0;
+      visibility: hidden;
+      -webkit-transition: 0.3s cubic-bezier(1, 0, 0, 1);
+      transition: 0.3s cubic-bezier(1, 0, 0, 1);
+      -webkit-transition-property: opacity;
+      transition-property: opacity;
+      will-change: opacity;
+    }
+
+    .popupBg {
+      cursor: pointer;
+      opacity: 0.7;
+      background-color: #000;
+      z-index: 2;
+    }
+
+    .popupBg label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: block;
+    }
+
+    .popupCon {
+      position: absolute;
+      top: 30%;
+      left: 0;
+      right: 0;
+      width: 92%;
+      max-width: 640px;
+      height: 100%;
+      margin: auto;
+      z-index: 3;
+    }
+
+    .popupInner {
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+      height: 35%;
+      padding: 0 1.5em 1.5em;
+      cursor: default;
+      background-color: #fff;
+      border-radius: 5px;
+      -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .popupButton_Close {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .popupButton_Close label {
+      display: inline-block;
+      padding: 0.5em;
+      color: #333;
+      text-decoration: none;
+      font-size: 2em;
+    }
+
+    .popupCheck:not(:checked)~.wrapper>*:not(.popupWrap) {
+      -webkit-filter: blur(0px);
+      filter: blur(0px);
+    }
+
+    .popupCheck:not(:checked)~.wrapper .popupWrap {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .popupCheck:checked~.wrapper>*:not(.popupWrap) {
+      -webkit-filter: blur(3px);
+      filter: blur(3px);
+    }
+
+
+
+    #popup01:checked~.wrapper #popup01Con {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #popup02:checked~.wrapper #popup02Con {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #popup03:checked~.wrapper #popup03Con {
+      opacity: 1;
+      visibility: visible;
+    }
+
+
+
+    .popupTittle {
+      padding: 2em 0.5em 1.5em;
+      font-size: 2em;
+      line-height: 1.3;
+      text-align: center;
+      color: #000;
+    }
+
+    .popupText .popupCover {
+      margin: 0 -1.5em 1em;
+    }
+
+    .popupText p {
+      margin-bottom: 1em;
+      line-height: 1.7;
+      color: #000;
+    }
+
+    .honto {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1><a href="javascript:history.go(-1)"><img src="./images/eveiku_icon/eveiku_icon.png" alt="">イベイク</a></h1>
+  </header>
+  <h2>チケット詳細</h2>
+  <main class="container_text">
+    <div class="container_about">
+      <div>
+        <p>イベントタイトル</p>
+        <p>
+          <%= title %>
+        </p>
+      </div>
+
+      <div>
+        <p>イベント概要</p>
+        <p>
+          <%= description %>
+        </p>
+      </div>
+
+      <div>
+        <p>開催日時</p>
+        <p>
+          <% if(date===null){ %>
+            日時データがありません
+            <% }else{ %>
+              <%= date.getFullYear() %>年<%= date.getMonth() + 1 %>月<%= date.getDate() %>日
+              <% } %>
+        </p>
+      </div>
+
+      <div>
+        <p>主催者</p>
+        <p>
+          <%= organizer %>
+        </p>
+      </div>
+
+      <div>
+        <p>開催場所</p>
+        <div>
+            <p>オフライン</p>
+            <% if ( capacity === 0 || null ) { %>
+              <h1>オフラインでは開催しません</h1>
+            <% } else { %>
+              <p><%= city %>(定員 <%= capacity %> 人)</p>
+            <% } %>
+            <p>オンライン</p>
+            <% if ( online_capacity === 0 || null ) { %>
+              <h1>オフラインでは開催しません</h1>
+            <% } else { %>
+              <p>オンライン会議URL: <%= online_url %> (定員 <%= online_capacity %> 人)</p>
+            <% } %>
+        </div>
+      </div>
+
+      <!-- </div> -->
+    </div>
+    <div class="container_ticket">
+
+      <p>チケットの種類</p>
+      <% if ( capacity === 0 || null ) { %>
+        <% } else { %>
+      <div>
+        <p>オフラインチケット</p>
+        <p><%= price %>円</p>
+        <input type="checkbox" id="popup03" class="popupCheck">
+        <div class="wrapper form" align="center">
+          　<div class="button small conteiner_btn">
+              <label for="popup03" class="value">参加する</label>
+            </div>
+            <div id="popup03Con" class="popupWrap">
+              <div class="popupBg">
+                <label for="popup03" class="popup_Close"></label>
+              </div>
+              <div class="popupCon">
+                <div class="popupInner">
+                  <div class="popupButton_Close"><label for="popup03" class="popup_Close">×</label></div>
+                  <div class="popupText conteiner_btn">
+                    <h1 class="honto">本当に参加しますか?</h1>
+                    <p onclick="location.href='./ticket/offline'" class="btn_join">参加する</p>
+                    <a href="javascript:history.back()">キャンセル</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <% } %>
+      <% if ( online_capacity === 0 || null ) { %>
+        <% } else { %>
+      <div>
+        <p>オンラインチケット</p>
+        <p><%= online_price %>円</p>
+        <input type="checkbox" id="popup02" class="popupCheck">
+        <div class="wrapper form" align="center">
+          　<div class="button small conteiner_btn">
+              <label for="popup02" class="value">参加する</label>
+            </div>
+            <div id="popup02Con" class="popupWrap">
+              <div class="popupBg">
+                <label for="popup02" class="popup_Close"></label>
+              </div>
+              <div class="popupCon">
+                <div class="popupInner">
+                  <div class="popupButton_Close"><label for="popup02" class="popup_Close">×</label></div>
+                  <div class="popupText conteiner_btn">
+                    <h1 class="honto">本当に参加しますか?</h1>
+                    <p onclick="location.href='./ticket/online'" class="btn_join">参加する</p>
+                    <a href="javascript:history.back()">キャンセル</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      <% } %>
+    </div>
+  </main>
+</body>
+</html>

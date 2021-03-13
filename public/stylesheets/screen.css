@@ -1,0 +1,401 @@
+@charset "UTF-8";
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+html {
+  font-family: "M PLUS Rounded 1c";
+  /* font-size: 62.5%; */
+}
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+nav,
+ul,
+li {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+a:visited {
+  color: inherti;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+/*-----------------
+変数
+------------------*/
+/*-----------------
+@mixin
+------------------*/
+/*-----------------
+共通
+------------------*/
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: white;
+  /* background-color: #e6b12142; */
+}
+
+.pre-registration-screen {
+  width: 92%;
+  margin: 0 auto;
+}
+
+.jender {
+  text-align: center;
+}
+
+select {
+  /* width: 606px; */
+  width: 100%;
+  height: 47px;
+  border: 2px solid rgb(118, 118, 118);
+  color: rgb(118, 118, 118);
+  font-size: 1.3rem;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding-left: 34px;
+}
+
+.black {
+  color: #000;
+}
+
+/*  
+.selectdiv {
+  position: relative;
+  
+  float: left;
+  min-width: 200px;
+  margin-bottom: 10px;
+}
+
+select::-ms-expand {
+display: none;
+}
+
+.selectdiv:after {
+  content: '<>';
+  font: 17px "Consolas", monospace;
+  color: #333;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 11px;
+  
+  top: 18px;
+  padding: 0 0 2px;
+  border-bottom: 1px solid #999; 
+  
+  position: absolute;
+  pointer-events: none;
+} */
+
+/*
+.selectdiv select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: 47px;
+  float: right;
+  margin: 5px 0px;
+  padding: 0px 24px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #333;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #707070;
+  border-radius: 10px;
+  -ms-word-break: normal;
+  word-break: normal;
+} 
+*/
+
+@media (min-width: 900px) {
+  .pre-registration-screen {
+    width: 60%;
+  }
+}
+
+.pre-registration-title {
+  text-align: center;
+  color: #e6b121;
+  font-size: 3.7rem;
+  line-height: 5.5rem;
+  font-weight: bold;
+  margin: 0 0 37px;
+}
+
+@media (min-width: 900px) {
+  .pre-registration-title {
+    margin: 70px 0 60px;
+  }
+}
+
+.pre-registration-form {
+  background-color: whitesmoke;
+  /* border: 1px solid #e6b121; */
+  border-radius: 1rem;
+  box-shadow: 3px 3px rgba(230, 177, 33, 0.486);
+  margin-bottom: 100px;
+  margin-top: 3rem;
+}
+
+.pre-registration-form__inner {
+  width: 84%;
+  margin: 0 auto;
+  font-size: 1.3rem;
+  padding: 25px 0 50px;
+}
+
+@media (min-width: 900px) {
+  .pre-registration-form__inner {
+    padding-top: 50px;
+  }
+}
+
+.pre-registration-desc__1 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: 15px;
+}
+
+.pre-registration-desc__2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: 36px;
+}
+
+.pre-registration-link {
+  text-decoration: underline;
+  text-align: center;
+  line-height: 2.2rem;
+  margin-bottom: 30px;
+}
+
+input {
+  width: 100%;
+  height: 47px;
+  border-radius: 10px;
+  padding-left: 34px;
+  margin-bottom: 19px;
+}
+
+input,
+select {
+  border: 1px solid#e6b121;
+}
+
+input:nth-last-child(2) {
+  margin-bottom: 53px;
+}
+
+input[type="submit"] {
+  background-color: #e6b121;
+  color: #fff;
+  font-weight: bold;
+  padding-left: 0;
+}
+/*# sourceMappingURL=main.css.map */
+
+.title_section {
+  color: white;
+  /* margin: 5rem 5rem 0 5rem; */
+  padding: 3rem 0;
+  font-size: 3rem;
+  text-align: center;
+  background-color: #ffcd45;
+  border-radius: 15rem;
+  font-weight: 700;
+
+  /* z-index: 99; */
+  /* margin: 2rem; */
+}
+
+@media screen and (max-width: 960px) {
+  body {
+    background-color: whitesmoke;
+  }
+  .pre-registration-form {
+    box-shadow: unset;
+  }
+}

@@ -1,0 +1,26 @@
+$eveiku_yellow: #f2cc19;
+$eveiku_yellow_hover: #f1d451;
+
+$bg_white: #fefdff;
+//フォント
+$NotoSansJP: "Noto Sans JP", sans-serif;
+
+//サイズ
+$sp: 960px;
+
+@mixin pc {
+  @media (max-width: ($pc)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}

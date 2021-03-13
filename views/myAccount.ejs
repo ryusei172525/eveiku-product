@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <%- include('./partial/latest/head_partial',{key:'build-page',title:'build9',avatar: data.avatar, name:
+        data.name,style:"myAccount",title:"アカウント設定" }) %>
+
+</head>
+
+<body>
+
+    <%- include('./partial/latest/header_partial',{key:'build-page',title:'build9',avatar: data.avatar, name: data.name
+        }) %>
+        <%- include('./partial/latest/sidebar_partial',{key:'build-page',title:'build9',avatar: data.avatar, name:
+            data.name,now:"config" }) %>
+            <main>
+                <section class="config event-list">
+
+                    <div class="config-inner">
+                        <div class="left">
+                            <div class="icon">
+                                <div class="icon-config">
+                                    <img src="<%= data.avatar %>" alt="" width="200px" height="200px">
+                                </div>
+                                <form name="icon" action="/config" method="POST" enctype="multipart/form-data"
+                                    class="icon-form">
+                                    <label>
+                                        <h3 class="icon-config-btn">アイコン変更</h3>
+                                        <input type="file" name="icon" accept=".png, .jpg, .jpeg" class="img-config">
+                                    </label>
+                                    <input type="submit" class="icon-submit" style="display: none;">
+                                </form>
+                            </div>
+                            <div class="intro">
+                                <form action="/config" method="POST" onsubmit="alert('アカウント設定内容の変更が保存されました。')">
+                                    <h2>自己紹介</h2>
+                                    <textarea name="bio" cols="30" rows="10"><%= data.bio %></textarea>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <dl>
+                                <dt>氏名</dt>
+                                <dd class="name">
+                                    <input type="text" name="name" value="<%= data.name %>">
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>生年月日</dt>
+                                <dd class="birthday">
+                                    <%- include('./partial/latest/birthday_partial',{date : data.birthday}) %>
+                                        <input type="text" name="birthday" class="birthday" style="display: none;">
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>性別</dt>
+                                <dd>
+                                    <select name="gender" class="gender" value="data.gender" required>
+                                        <option hidden>性別</option>
+                                        <option value="男性">男性</option>
+                                        <option value="女性">女性</option>
+                                        <option value="未回答">未回答</option>
+                                    </select>
+                                </dd>
+                            </dl>
+                            <script>
+
+                            </script>
+                            <dl>
+                                <dt>メールアドレス</dt>
+                                <dd>
+                                    <input type="text" name="email" value="<%= data.email %>">
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>業種</dt>
+                                <dd>
+                                    <select name="occupation" class="occupation" value="<%= data.occupation %>"
+                                        required>
+                                        <option value="" hidden>業種</option>
+                                        <option value="農業・林業">農業・林業</option>
+                                        <option value="漁業">漁業</option>
+                                        <option value="農鉱業・採石業・砂利採取業業・林業">農鉱業・採石業・砂利採取業業・林業</option>
+                                        <option value="鉱業・採石業・砂利採取業">鉱業・採石業・砂利採取業</option>
+                                        <option value="建設業">建設業</option>
+                                        <option value="製造業">製造業</option>
+                                        <option value="電気・ガス・熱供給・水道業">電気・ガス・熱供給・水道業</option>
+                                        <option value="情報通信業">情報通信業</option>
+                                        <option value="運輸業・郵便業">運輸業・郵便業</option>
+                                        <option value="卸売業・小売業">卸売業・小売業</option>
+                                        <option value="金融業・保険業">金融業・保険業</option>
+                                        <option value="不動産業・物品賃貸業">不動産業・物品賃貸業</option>
+                                        <option value="学術研究・専門・技術サービス業">学術研究・専門・技術サービス業</option>
+                                        <option value="宿泊業・飲食店">宿泊業・飲食店</option>
+                                        <option value="生活関連サービス業・娯楽業">生活関連サービス業・娯楽業</option>
+                                        <option value="教育学習支援業">教育学習支援業</option>
+                                        <option value="医療・福祉">医療・福祉</option>
+                                        <option value="複合サービス事業">複合サービス事業</option>
+                                        <option value="サービス業（他に分類されないもの）">サービス業（他に分類されないもの）</option>
+                                        <option value="公務（他に分類されるものを除く）">公務（他に分類されるものを除く）</option>
+                                        <option value="その他">その他</option>
+                                    </select>
+                                </dd>
+                            </dl>
+
+                            <dl>
+                                <dt>職種</dt>
+                                <dd>
+                                    <select name="industry" class="industry" value="<%= data.industry %>" required>
+                                        <option value="" hidden>職種</option>
+                                        <option value="PM・プロデューサー・ディレクター">PM・プロデューサー・ディレクター</option>
+                                        <option value="マーケティング・PR">マーケティング・PR</option>
+                                        <option value="デザイナー">デザイナー</option>
+                                        <option value="コーポレート">コーポレート</option>
+                                        <option value="経営・CxO">経営・CxO</option>
+                                        <option value="事業開発">事業開発</option>
+                                        <option value="セールス・カスタマーサクセス">セールス・カスタマーサクセス</option>
+                                        <option value="コンサルティング">コンサルティング</option>
+                                        <option value="編集・ライティング">編集・ライティング</option>
+                                        <option value="投資家">投資家</option>
+                                        <option value="学生">学生</option>
+                                        <option value="その他">その他</option>
+                                    </select>
+                                </dd>
+                            </dl>
+
+
+                            <dl>
+                                <dt>最終学歴(学校名まで)</dt>
+                                <dd>
+                                    <input type="text" name="university" value="<%= data.university %>"
+                                        placeholder="クリックして入力">
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>会社名/学校名</dt>
+                                <dd>
+                                    <input type="text" name="company" value="<%= data.company %>"
+                                        placeholder="クリックして入力">
+                                </dd>
+                            </dl>
+                            <input type="submit" value="変更を保存" class="config-btn">
+
+                        </div>
+                    </div>
+                    </form>
+                </section>
+            </main>
+            <%- include('./partial/latest/footer_partial') %>
+
+                <script>
+
+                    const img_config = document.querySelector("input[name=icon]");
+                    img_config.addEventListener("input", function () {
+                        document.forms["icon"].submit();
+                    });
+
+                    const initialGendar = "<%= data.gender %>";
+                    const targetGendar = document.querySelectorAll(".gender > option");
+                    for (let i of targetGendar) if (i.value == initialGendar) i.selected = true;
+
+                    const initialIndustry = "<%= data.industry %>";
+                    const targetIndustry = document.querySelectorAll(".industry > option");
+                    for (let i of targetIndustry) if (i.value == initialIndustry) i.selected = true;
+
+                    const initialOccupation = "<%= data.occupation %>";
+                    console.log(initialIndustry)
+                    const targetOccupation = document.querySelectorAll(".occupation > option");
+                    for (let i of targetOccupation) if (i.value == initialOccupation) i.selected = true;
+
+                    $('body').on('click', '.open', function () {
+                        $('aside').removeClass('display-none');
+                        $('.bg').removeClass('display-none');
+                    });
+
+                    $('body').on('click', '.bg', function () {
+                        $('aside').addClass('display-none');
+                        $('.bg').addClass('display-none');
+                    });
+
+                    $('body').on('click', '.user-name', function () {
+                        $('.modal').removeClass('display-none');
+                        $('.bg').removeClass('display-none');
+                    });
+
+                    $('body').on('click', '.bg', function () {
+                        $('.modal').addClass('display-none');
+                        $('.bg').addClass('display-none');
+                    });
+
+                </script>

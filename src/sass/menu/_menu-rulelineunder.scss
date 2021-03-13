@@ -1,0 +1,29 @@
+.menu-rulelineunder {
+  text-align: center;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    list-style: none;
+    display: inline-block;
+    width: 10%;
+    min-width: 90px;
+  }
+  li:not(:last-child) {
+    border-right: 2px solid #ddd;
+  }
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+  a.current {
+    color: #00b0f0;
+    border-bottom: 2px solid #00b0f0;
+  }
+  a:hover {
+    color: #f7cb4d;
+    border-bottom: 2px solid #f7cb4d;
+  }
+}

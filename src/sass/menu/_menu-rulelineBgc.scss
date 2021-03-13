@@ -1,0 +1,37 @@
+.menu-rulelineBgc {
+  border-bottom: 1px solid #ccc;
+
+  ul {
+    display: table;
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+    text-align: center;
+  }
+  ul li {
+    display: table-cell;
+    min-width: 50px;
+    border-right: 1px solid #ccc;
+  }
+  ul li:first-child {
+    border-left: 1px solid #ccc;
+  }
+  ul li a {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    text-decoration: none;
+    color: #aaa;
+  }
+  ul li a:hover {
+    background-color: #f8e750;
+    border-bottom: 5px solid #f8e750;
+  }
+  ul li.current {
+    font-weight: bold;
+  }
+  ul li.current a {
+    border-bottom: 5px solid #00b0f0;
+    color: #00b0f0;
+  }
+}

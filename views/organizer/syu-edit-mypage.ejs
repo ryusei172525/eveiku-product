@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <!--<head>-->
+  <!--  <meta charset="UTF-8" />-->
+  <!--  <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+  <!--  <meta http-equiv="X-UA-Compatible" content="ie=edge" />-->
+  <!--  <link rel="stylesheet" href='/stylesheets/syu-mypage4.css'>-->
+  <!--  <title>my-page4</title>-->
+  <!--</head>-->
+      <%- include('../partial/header_oraganizer',{key:'syu-mypage4',title:'mypage4'}) %>
+
+
+
+  <body>
+    
+    <header>
+      <div class="header-logo">
+        <a href="/organizer-mypage">
+          <img src="/images/ロゴ.png" width="170px">
+        </a>
+      </div>
+
+      <div class="user-icon">
+        <img src="./img/人物アイコン-1@2x.png" alt="" width="40px" />
+      </div>
+      <!-- 🍔 -->
+      <input id="menu" type="checkbox" />
+      <label for="menu" class="open">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <label for="menu" class="back"></label>
+
+      <aside>
+        <label for="menu" class="close">×</label>
+        <nav>
+          <ul>
+            <li><a href="/home">マイページTop</a></li>
+            <li><a href="/organizer-information">登録情報</a></li>
+            <!-- <li><a href="/message">メッセージ</a></li> -->
+            <li><a href="/management">マイイベント管理</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <!-- 🍔 -->
+
+      <nav class="pc-nav">
+        <ul>
+          <li><img src="./images/人物.png" alt="" width="50px" /></li>
+          <li><%= name%></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <%- include('../partial/sidemenu-org') %>
+
+      <div class="section-wrap">
+        <section class="user-information">
+          <div class="section-inner">
+            <!-- <div class="section-title">
+              <h2 class="section-title__text">アカウント情報</h2>
+              <div class="section-title__edit">
+                  <p>変更する</p>   
+                </a>
+              </div>
+            </div>
+            <div class="account-info__list">
+              <div class="account-info__unit">
+                <p class="account-info__title">ID</p>
+                <p class="account-info__text"></p>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">メール</p>
+                <p class="account-info__text">akauntomei123@aaa.jp</p>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">パスワード</p>
+                <p class="account-info__text">●●●●●●</p>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">お支払情報</p>
+                <p class="account-info__text">VISA</p>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">会員ステータス</p>
+                <p class="account-info__text">個人会員</p>
+              </div>
+            </div> -->
+
+            <form class ="signup-form" action="/organizer-information" method="POST">
+            <div class="section-title">
+              <h2 class="section-title__text">プロフィール設定</h2>
+              <div class="section-title__edit">
+                <!-- <a href = "organizer-information/syu-mypage3" >-->
+                <!--<p>変更する</p>-->
+                <input type="submit" id ='submit'value="変更を確定する" >
+              </div>
+            </div>
+            <div class="account-info__list">
+              <div class="account-info__unit">
+                <p class="account-info__title">ユーザー名</p>
+                <input type="text" class="account-info__text" name='name' value=<%= name%>>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">自己紹介文</p>
+                <input type="text" class="account-info__text" name="bio" value=<%=bio%>>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">年齢</p>
+                <input type="text" class="account-info__text" name="age"value=<%= age%>>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">性別</p>
+                <input type="text" class="account-info__text" name="gender"value=<%= gender%>>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">出身大学</p>
+                <input type="text" class="account-info__text" name="university" value=<%= university%>>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">お勤め先</p>
+                <input type="text" class="account-info__text" name="company" value=<%= company%>>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">職種</p>
+                <input type="text" class="account-info__text" name="occupation" value=<%= occupation%>>
+              </div>
+            </div>
+            </form>
+
+            <!-- <div class="section-title">
+              <h2 class="section-title__text">SNS連携</h2>
+              <div class="section-title__edit">
+                <p>変更する</p>
+              </div>
+            </div>
+            <div class="account-info__list">
+              <div class="account-info__unit">
+                <p class="account-info__title">Twitter</p>
+                <p class="account-info__text">連携済み</p>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">FaceBook</p>
+                <p class="account-info__text">連携する</p>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">Instagram</p>
+                <p class="account-info__text">連携する</p>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">note</p>
+                <p class="account-info__text">連携する</p>
+              </div>
+            </div>
+
+            <div class="section-title">
+              <h2 class="section-title__text">サブスクリプション</h2>
+              <span class="section-title__span">(準備中)</span>
+              <div class="section-title__edit">
+                <p>変更する</p>
+              </div>
+            </div>
+            <div class="subscribe-info__list">
+              <div class="subscribe-info__unit_1">
+                <p class="subscribe-info__title">プラン名</p>
+                <p class="subscribe-info__text">シルバープラン</p>
+                <p class="subscribe-info__text">テンプレート使い放題プラン</p>
+              </div>
+              <div class="subscribe-info__unit_2">
+                <p class="subscribe-info__title">料金</p>
+                <p class="subscribe-info__text">¥1,100(税込)/月</p>
+                <p class="subscribe-info__text">¥550(税込)/月</p>
+              </div>
+              <div class="subscribe-info__unit_3">
+                <p class="subscribe-info__title">更新予定</p>
+                <p class="subscribe-info__text">2020年11月12日</p>
+                <p class="subscribe-info__text">2020年11月19日</p>
+              </div>
+            </div>
+
+            <div class="section-title">
+              <h2 class="section-title__text">メール通知</h2>
+              <div class="section-title__edit">
+                <p>変更する</p>
+              </div>
+            </div>
+            <div class="email-info__list">
+              <div class="account-info__unit">
+                <p class="account-info__title">フォローされた時</p>
+                <div class="switch-on-and-off">
+                  <div class="switch-on">ON</div>
+                  <div class="switch-off">OFF</div>
+                </div>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">メッセージが来たとき</p>
+                <div class="switch-on-and-off">
+                  <div class="switch-on">ON</div>
+                  <div class="switch-off">OFF</div>
+                </div>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">問い合わせがあったとき</p>
+                <div class="switch-on-and-off">
+                  <div class="switch-on">ON</div>
+                  <div class="switch-off">OFF</div>
+                </div>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">チケットが購入されたとき</p>
+                <div class="switch-on-and-off">
+                  <div class="switch-on">ON</div>
+                  <div class="switch-off">OFF</div>
+                </div>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">イベントに興味を持たれたとき</p>
+                <div class="switch-on-and-off">
+                  <div class="swap-on-to-off">ON</div>
+                  <div class="swap-off-to-on">OFF</div>
+                </div>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">チケット代金が入金されたとき</p>
+                <div class="switch-on-and-off">
+                  <div class="switch-on">ON</div>
+                  <div class="switch-off">OFF</div>
+                </div>
+              </div>
+              <div class="account-info__unit">
+                <p class="account-info__title">
+                  イベントへの参加がキャンセルされたとき
+                </p>
+                <div class="switch-on-and-off">
+                  <div class="swap-on-to-off">ON</div>
+                  <div class="swap-off-to-on">OFF</div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

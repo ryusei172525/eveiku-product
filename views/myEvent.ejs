@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <%- include('./partial/latest/head_partial',{key:'build-page',title:'build9',avatar: data.avatar, name:
+        data.name,style:"myEvent", title:"参加イベント"}) %>
+
+</head>
+
+<body>
+
+    <%- include('./partial/latest/header_partial',{key:'build-page',title:'build9',avatar: data.avatar, name:
+        data.name}) %>
+        <%- include('./partial/latest/sidebar_partial',{key:'build-page',title:'build9',avatar: data.avatar,
+            name:data.name, now:"my" }) %>
+            <main>
+                <section class="san event-list">
+                    <div class="header">
+                        <h2 class="title">参加イベント一覧</h2>
+                        <a href="/search-event" class="make-btn">
+                            <button>＋新しいイベントを探す</button>
+                        </a>
+                    </div>
+                    <div class="list">
+                        <ul>
+                            <% if (data.join_event.length===0) { %>
+                                <h1 class="none-events">現在参加しているイベントはありません</h1>
+                                <% } else { %>
+                                    <% for (var p=0; p < data.join_event.length; p++) { %>
+                                        <li class="item">
+                                            <div class="syu-event event">
+                                                <div class="txt">
+                                                    <a href="/public/<%= data.join_event[p].url %>">
+                                                        <h3>
+                                                            <%= data.join_event[p].title %>
+                                                        </h3>
+                                                    </a>
+                                                    <p class="time">イベント日時 :
+                                                        <% if(data.join_event[p].date===null){ %>
+                                                            日時なし
+                                                            <% }else{ %>
+                                                                <%= data.join_event[p].date.getFullYear() %>年
+                                                                    <%= data.join_event[p].date.getMonth() + 1%>月
+                                                                        <%= data.join_event[p].date.getDate() %>日
+                                                                            <% } %>
+                                                    </p>
+                                                </div>
+                                                <ul>
+                                                    <form action="/tickets/<%= data.join_event[p].id %>">
+                                                        <label>
+                                                            <input class="goticket" type="submit">
+                                                            <li><img src="../images/eveiku_icon/ticket(1).png" alt=""
+                                                                    width="40px"></li>
+                                                        </label>
+                                                    </form>
+                                                    <!-- 本番 -->
+                                                    <form method="get" action="http://eveiku.jp/message">
+                                                    <!-- ローカル -->
+                                                    <!-- <form method="get" action="http://localhost:3000/message"> -->
+                                                        <input type="text" name="id"
+                                                            value="<%= data.join_event[p]['user.id'] %>"
+                                                            style="display: none">
+                                                        <input name="name"
+                                                            value="<%= data.join_event[p]['user.name'] %>"
+                                                            style="display: none;">
+                                                        <li style="display: none;">
+                                                            <input name="stream_id_array"
+                                                                value="<%= data.stream_id_array %>">
+                                                        </li>
+                                                        <li style="display: none;">
+                                                            <input name="participant_name_array"
+                                                                value="<%= data.participant_name_array %>">
+                                                        </li>
+                                                        <input type="hidden" name="mail"
+                                                            value="<%= data.join_event[p]['user.email'] %>">
+
+                                                        <button type="submit">
+                                                            <label>
+                                                                <li>
+                                                                    <img src="../images/eveiku_icon/inbox.png" alt=""
+                                                                        width="40px">
+                                                                </li>
+                                                            </label>
+                                                        </button>
+                                                    </form>
+                                                    <!-- イベント参加取り消し -->
+                                                    <form action="myEvent/cancel/<%= data.join_event[p].id %>"
+                                                        method="post">
+
+                                                        <input type="string" name="event_id"
+                                                            value="<%= data.join_event[p].id %>" style="display: none;">
+                                                        <li class="close-icon remove-btn"
+                                                            data-name="<%= data.join_event[p].title %>"><img
+                                                                src="../images/eveiku_icon/close.png" alt=""
+                                                                width="30px"></li>
+                                                        <button type="submit" value="キャンセル" style="display: none;">
+                                                        </button>
+
+                                                    </form>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <!-- ここ閉じるの忘れないで!!!! -->
+                                        <% } %>
+                                            <% } %>
+                        </ul>
+                    </div>
+                </section>
+                <div class="confirmation-bg display-none"></div>
+                <div class="confirmation-bg display-none"></div>
+                <div class="confirmation display-none">
+                    <div class="confirmation-inner">
+                        <div>
+                            <h1 class="confirmation-text">本当に参加を取り消しますか？</h1>
+                            <p class="remove-name"></p>
+                            <div>
+                                <p class="confirmation-btn">取り消し</p>
+                                <p class="confirmation-close">キャンセル</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+            <%- include('./partial/latest/footer_partial') %>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                <script>
+                    let remove_num;
+                    $('body').on('click', '.remove-btn', function () {
+                        remove_num = $(this);
+                        console.log(remove_num.data("name"));
+                        $('.confirmation').removeClass('display-none');
+                        $('.confirmation-bg').removeClass('display-none');
+                        $(".remove-name").text(remove_num.data("name"));
+                        $('body').on('click', '.confirmation-btn', function () {
+                            remove_num.next("button").trigger("click");
+                        });
+                    });
+                    $('body').on('click', '.confirmation-bg,.confirmation-close', function () {
+                        $('.confirmation').addClass('display-none');
+                        $('.confirmation-bg').addClass('display-none');
+                    });
+
+                    $('body').on('click', '.open', function () {
+                        $('aside').removeClass('display-none');
+                        $('.bg').removeClass('display-none');
+                    });
+
+                    $('body').on('click', '.bg', function () {
+                        $('aside').addClass('display-none');
+                        $('.bg').addClass('display-none');
+                    });
+
+                    $('body').on('click', '.user-name', function () {
+                        $('.modal').removeClass('display-none');
+                        $('.bg').removeClass('display-none');
+                    });
+
+                    $('body').on('click', '.bg', function () {
+                        $('.modal').addClass('display-none');
+                        $('.bg').addClass('display-none');
+                    });
+
+                </script>
+</body>
+
+</html>

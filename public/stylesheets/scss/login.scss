@@ -1,0 +1,242 @@
+@charset "UTF-8";
+@import "./variable.scss";
+@import "../reset.css";
+
+html {
+  font-size: 62.5%;
+  font-family: $NotoSansJP;
+}
+
+body {
+  background-color: $eveiku_yellow;
+  margin: 0;
+}
+
+html,
+body,
+main {
+  height: 100%;
+}
+//ヘッダー
+header {
+  display: flex;
+  align-items: center;
+  height: 55px;
+  padding: 0.5rem 3rem;
+  @include sp {
+    padding: 0.5rem 1rem;
+    height: 4rem;
+  }
+}
+
+//ロゴ
+header > a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  img {
+    width: 5rem;
+  }
+  h1 {
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-left: 1rem;
+    font-family: $NotoSansJP;
+  }
+
+  @include sp {
+    img {
+      width: 3rem;
+    }
+    h1 {
+      font-size: 2.3rem;
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.wrapper_login {
+  padding: 0 10rem;
+  display: grid;
+  grid-template-columns: 1fr 40rem;
+  height: 100%;
+  margin-top: -6.5rem;
+  // キャッチ
+  & > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 0 auto;
+  }
+}
+
+// ログイン部分
+.container_signin {
+  background-color: $bg_white;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  height: 47rem;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin: 0 0 2rem 0;
+  }
+}
+
+.container_signin > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  input {
+    border: gray solid 2px;
+    font-size: 2rem;
+    width: 25rem;
+    margin: 1rem auto;
+    padding: 1rem 1rem 1rem 4rem;
+    border-radius: 0.7rem;
+    &:nth-of-type(2) {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+//OR
+.container_signin {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+//btn
+.container_signin .btn {
+  border: none;
+  font-size: 2rem;
+  width: 30rem;
+  margin: 1rem auto;
+  padding: 1rem 0;
+  border-radius: 0.7rem;
+  background-color: $eveiku_yellow;
+  color: $bg_white;
+  font-weight: bold;
+}
+.longinOR {
+  margin: 0px;
+}
+//新規会員登録
+
+.display_none {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+main {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 6.5rem);
+}
+
+.container_signup {
+  background-color: $bg_white;
+  position: absolute;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.15s;
+}
+
+.container_signup > form {
+  margin: 0 4rem;
+  display: grid;
+  grid-template-columns: repeat(6, 70px);
+  grid-template-rows: repeat(6, 70px);
+  grid-template-areas:
+    "m m m m m m"
+    "p p p p p p"
+    "n n n g g g"
+    "by by bm bm bd bd"
+    "o o o i i i"
+    "c c c u u u";
+}
+
+.container_signup {
+  h2 {
+    font-size: 3rem;
+    text-align: center;
+  }
+  input,
+  select {
+    font-size: 2rem;
+    border: gray 2px solid;
+    margin: 0 1rem 2rem 1rem;
+    border-radius: 5px;
+    padding: 1rem;
+  }
+  .email {
+    grid-area: m;
+  }
+  .password {
+    grid-area: p;
+  }
+  .name {
+    grid-area: n;
+  }
+  .gender {
+    grid-area: g;
+  }
+  .birthday_year {
+    grid-area: by;
+    font-size: 1.2rem;
+  }
+  .birthday_month {
+    grid-area: bm;
+    font-size: 1.2rem;
+  }
+  .birthday_day {
+    grid-area: bd;
+    font-size: 1.2rem;
+  }
+  .occupation {
+    grid-area: o;
+  }
+  .industry {
+    grid-area: i;
+  }
+  .company {
+    grid-area: c;
+  }
+  .university {
+    grid-area: u;
+  }
+}
+
+.btn_close_modal {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 3rem;
+}
+
+.btn_submit {
+  border: none;
+  border-style: none;
+  font-weight: bold;
+  color: $bg_white;
+  background-color: $eveiku_yellow;
+  width: 14rem;
+  font-size: 2rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  padding: 1rem 3rem;
+}

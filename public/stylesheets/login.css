@@ -1,0 +1,249 @@
+@import url(c:\Users\iniad\ws\holox\github\tmp\eveiku\public\stylesheets\reset.css);
+html {
+  font-size: 62.5%;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+body {
+  background-color: #f2cc19;
+  margin: 0;
+}
+
+html,
+body,
+main {
+  height: 100%;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  height: 55px;
+  padding: 0.5rem 3rem;
+}
+
+@media (max-width: 960px) {
+  header {
+    padding: 0.5rem 1rem;
+    height: 4rem;
+  }
+}
+
+header > a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+header > a img {
+  width: 5rem;
+}
+
+header > a h1 {
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-left: 1rem;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+@media (max-width: 960px) {
+  header > a img {
+    width: 3rem;
+  }
+  header > a h1 {
+    font-size: 2.3rem;
+    margin-left: 0.5rem;
+  }
+}
+
+.wrapper_login {
+  padding: 0 10rem;
+  display: grid;
+  grid-template-columns: 1fr 40rem;
+  height: 100%;
+  margin-top: -6.5rem;
+}
+
+.wrapper_login > p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.container_signin {
+  background-color: #fefdff;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  height: 47rem;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+
+.container_signin h2 {
+  font-size: 3rem;
+  text-align: center;
+  margin: 0 0 2rem 0;
+}
+
+.container_signin > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_signin > form input {
+  border: gray solid 2px;
+  font-size: 2rem;
+  width: 25rem;
+  margin: 1rem auto;
+  padding: 1rem 1rem 1rem 4rem;
+  border-radius: 0.7rem;
+}
+
+.container_signin > form input:nth-of-type(2) {
+  margin-bottom: 3rem;
+}
+
+.container_signin {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.container_signin .btn {
+  border: none;
+  font-size: 2rem;
+  width: 30rem;
+  margin: 1rem auto;
+  padding: 1rem 0;
+  border-radius: 0.7rem;
+  background-color: #f2cc19;
+  color: #fefdff;
+  font-weight: bold;
+}
+
+.longinOR {
+  margin: 0px;
+}
+
+.display_none {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+main {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 6.5rem);
+}
+
+.container_signup {
+  background-color: #fefdff;
+  position: absolute;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.15s;
+}
+
+.container_signup > form {
+  margin: 0 4rem;
+  display: grid;
+  grid-template-columns: repeat(6, 70px);
+  grid-template-rows: repeat(6, 70px);
+  grid-template-areas: "m m m m m m" "p p p p p p" "n n n g g g" "by by bm bm bd bd" "o o o i i i" "c c c u u u";
+}
+
+.container_signup h2 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.container_signup input,
+.container_signup select {
+  font-size: 2rem;
+  border: gray 2px solid;
+  margin: 0 1rem 2rem 1rem;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.container_signup .email {
+  grid-area: m;
+}
+
+.container_signup .password {
+  grid-area: p;
+}
+
+.container_signup .name {
+  grid-area: n;
+}
+
+.container_signup .gender {
+  grid-area: g;
+}
+
+.container_signup .birthday_year {
+  grid-area: by;
+  font-size: 1.2rem;
+}
+
+.container_signup .birthday_month {
+  grid-area: bm;
+  font-size: 1.2rem;
+}
+
+.container_signup .birthday_day {
+  grid-area: bd;
+  font-size: 1.2rem;
+}
+
+.container_signup .occupation {
+  grid-area: o;
+}
+
+.container_signup .industry {
+  grid-area: i;
+}
+
+.container_signup .company {
+  grid-area: c;
+}
+
+.container_signup .university {
+  grid-area: u;
+}
+
+.btn_close_modal {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 3rem;
+}
+
+.btn_submit {
+  border: none;
+  border-style: none;
+  font-weight: bold;
+  color: #fefdff;
+  background-color: #f2cc19;
+  width: 14rem;
+  font-size: 2rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  padding: 1rem 3rem;
+}
+/*# sourceMappingURL=login.css.map */

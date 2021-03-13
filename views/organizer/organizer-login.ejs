@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+    <%- include('../partial/header_oraganizer',{key:'organizer-login',title:'sign-up'}) %>
+
+
+
+<body>
+  <header>
+    <div class="header-logo">
+      <a href="./syu-top">
+        <img src="./images/ロゴ.png" width="170px">
+      </a>
+    </div>
+    <!-- 🍔 -->
+    <div class="open">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <!-- 🍔 -->
+    <nav class="pc-nav">
+      <ul>
+        <li><a href="syu-sign-up">新規登録</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="signup">
+      <div class="signup-free">
+        <h2 class="signup-title">主催者用ログイン</h2>
+        <form class="signup-form" action="/login" method="POST">
+          <div class="signup-form__inner">
+            <input type="email" name="email" placeholder="メールアドレス">
+            <input type="password" name="password" placeholder="パスワード">
+            <input type="submit" value="ログインする">
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+</body>
+
+</html>

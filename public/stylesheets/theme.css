@@ -1,0 +1,549 @@
+@charset "UTF-8";
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+nav,
+ul,
+li {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+a:visited {
+  color: inherti;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+/*-----------------
+変数
+------------------*/
+/*-----------------
+@mixin
+------------------*/
+/*-----------------
+共通
+------------------*/
+html {
+  font-size: 62.5%;
+}
+
+header {
+  width: 100%;
+  height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1.7rem 1.7rem 2rem 1.3rem;
+  border-bottom: 1px solid #707070;
+}
+
+.header-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 3rem;
+}
+
+.header-logo__icon {
+  display: inline-block;
+  height: 1px;
+  background-color: #707070;
+}
+
+.pc-nav {
+  display: none;
+  font-size: 2.2rem;
+  width: 82%;
+}
+
+.pc-nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pc-nav li:not(:first-child) {
+  margin-left: 30px;
+}
+
+.pc-nav li:last-child {
+  margin-left: 10px;
+}
+
+.pc-nav li:nth-last-child(2) {
+  margin-left: auto;
+}
+
+@media (min-width: 1200px) {
+  .pc-nav {
+    display: inline-block;
+  }
+}
+
+.template-nav {
+  margin: 0 auto 20px;
+  padding: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border: 1px solid #000;
+}
+
+.template-nav__wrap {
+  width: 15%;
+  background-color: #000;
+}
+
+.template-nav__title {
+  color: #E1A80E;
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 3rem;
+  padding: 10px 0;
+}
+
+.template-list-inner {
+  width: 94%;
+  margin: 0 auto;
+}
+
+.prev-create-event {
+  color: #2D7CF2;
+}
+
+.template-list-title-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.template-list-title-flex input[type="text"] {
+  height: 30px;
+  width: 25%;
+  margin: auto 0 10px auto;
+}
+
+.template-list-title-flex .serch-wrap {
+  margin: auto 10px 10px 0;
+  border: 1px solid #707070;
+  background-color: #000;
+}
+
+.template-list-title-flex .serch {
+  font-size: 1.6rem;
+  color: #E1A80E;
+  padding: 6px;
+}
+
+.template-list-title-flex .sort-wrap {
+  margin: auto 100px 10px 10px;
+  border: 1px solid #707070;
+}
+
+.template-list-title-flex .sort {
+  font-size: 1.6rem;
+  padding: 6px;
+}
+
+.template-list-title-flex::after {
+  display: block;
+  content: "";
+  width: 95%;
+  border-bottom: 1px solid #000;
+}
+
+.template-list-title {
+  font-size: 5rem;
+  line-height: 8rem;
+}
+
+.template-cards-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.template-card {
+  width: 32%;
+}
+
+.template-card:nth-child(2) {
+  position: relative;
+}
+
+.template-card:nth-child(2)::before {
+  position: absolute;
+  top: 0;
+  left: -3.3%;
+  display: inline-block;
+  content: "";
+  width: 1px;
+  height: 90%;
+  background-color: #000;
+}
+
+.template-card:nth-child(2)::after {
+  position: absolute;
+  top: 0;
+  right: -3.3%;
+  display: inline-block;
+  content: "";
+  width: 1px;
+  height: 90%;
+  background-color: #000;
+}
+
+.template-card:nth-child(5) {
+  position: relative;
+}
+
+.template-card:nth-child(5)::before {
+  position: absolute;
+  top: 0;
+  left: -3.3%;
+  display: inline-block;
+  content: "";
+  width: 1px;
+  height: 90%;
+  background-color: #000;
+}
+
+.template-card:nth-child(5)::after {
+  position: absolute;
+  top: 0;
+  right: -3.3%;
+  display: inline-block;
+  content: "";
+  width: 1px;
+  height: 90%;
+  background-color: #000;
+}
+
+.template-name {
+  font-size: 2rem;
+  line-height: 3.7rem;
+  font-weight: bold;
+  color: #E1A80E;
+  background-color: #000;
+  text-align: center;
+  border: 1px solid #707070;
+}
+
+.template-img {
+  margin-bottom: 10px;
+}
+
+.template-img img {
+  width: 100%;
+}
+
+.template-author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 15px;
+}
+
+.template-author__avatar {
+  max-width: 45px;
+}
+
+.template-author__avatar img {
+  width: 100%;
+}
+
+.template-author__name {
+  font-size: 2rem;
+}
+
+.template-price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+.template-price__icon {
+  max-width: 45px;
+}
+
+.template-price__icon img {
+  width: 100%;
+}
+
+.template-price__text {
+  font-size: 2rem;
+}
+
+.select-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 15px;
+}
+
+.select-btn::after {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 10px;
+  border-bottom: 1px solid #000;
+}
+
+.select-btn .use {
+  font-size: 2rem;
+  line-height: 3.8rem;
+  color: #2D7CF2;
+  background-color: #fff;
+  border: 1px solid #2D7CF2;
+  width: 40%;
+  padding: 5px 0;
+}
+
+.select-btn .take-look {
+  font-size: 2rem;
+  line-height: 3.8rem;
+  color: #2D7CF2;
+  background-color: #fff;
+  border: 1px solid #2D7CF2;
+  width: 40%;
+  padding: 5px 0;
+}
+
+.template-text-wrap {
+  margin-bottom: 10px;
+}
+
+.template-text-wrap::after {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 10px;
+  border-bottom: 1px solid #000;
+}
+
+.template-text-wrap .template-text {
+  font-size: 1.6rem;
+  line-height: 2.3rem;
+  padding-bottom: 70px;
+}
+
+.hashtag {
+  color: #2D7CF2;
+  font-size: 2rem;
+  line-height: 3.8rem;
+  margin-bottom: 80px;
+}
+/*# sourceMappingURL=main.css.map */

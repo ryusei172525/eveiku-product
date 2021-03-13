@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.item {
+    width: 22%;
+}
+
+img {
+    margin-bottom: 2rem;
+    width: 100%;
+}
+  
+.modal-form {
+    margin-bottom: 2rem;
+}
+  
+.modal-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2rem;
+}
+.display-none {
+    display: none;
+}

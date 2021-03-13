@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <link rel="stylesheet" href='/stylesheets/message.css'>
+  <%- include('./partial/latest/head_partial',{key:'build-page',title:'build9',avatar: Data.avatar, name:
+    Data.name,style:"mypage_forchat",title:"メッセージ" }) %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <style>
+      main {
+        margin-left: 0;
+      }
+    </style>
+</head>
+
+<body>
+
+  <main>
+    <li class="usertoken" style="width:0;height: 0;visibility: hidden;font-size: 0;">
+      <%=token%>
+    </li>
+    <li class="user_id" style="width:0;height: 0;visibility: hidden;font-size: 0;">
+      <%=user_id_mail%>
+    </li>
+    <li class="participant_token" style="width:0;height: 0;visibility: hidden;font-size: 0;">
+      <%=participant_data.participant_token%>
+    </li>
+    <li class="participant_id" style="width:0;height: 0;visibility: hidden;font-size: 0;">
+      <%=participant_data.participant_id_mail%>
+    </li>
+    <li id="stream_id_array" style="width:0;height: 0;visibility: hidden;font-size: 0;">
+      <%=participant_data.stream_id_array%>
+    </li>
+    <li id="participant_name_array" style="width:0;height: 0;visibility: hidden;font-size: 0;">
+      <%=participant_data.participant_name_array%>
+    </li>
+    <li class="participant_icon_src_array" style="width:0;height: 0;visibility: hidden;font-size: 0;">
+      <%=participant_data.participant_icon_src_array%>
+    </li>
+    <li class="username" style="width:0;height: 0;visibility: hidden;font-size: 0;">
+      <%=Data.name%>
+    </li>
+
+    <%- include('./partial/latest/header_partial',{key:'build-page',title:'build9',avatar: Data.avatar, name: Data.name
+      }) %>
+      <%- include('./partial/latest/sidebar_partial',{key:'build-page',title:'build9',avatar: Data.avatar, name:
+        Data.name,now:"home" }) %>
+
+        <section class="talk-menu">
+          <div class="talk-serch">
+            <i class="fas fa-search fa-2x icon"></i>
+          </div>
+            <div id="talk-list">
+
+            </div>
+        </section>
+
+        <!-- pc用 -->
+        <section class="chat">
+          <div class="chat-partner__desc">
+            <div class="chat-partner__avatar">
+              <img src="./img/top06@2x.png" alt="">
+            </div>
+            <p class="participant_name-top" id="chat-partner">
+              <%=participant_data.participant_name%>とのメッセージ
+            </p>
+            <p id="currentchat_partner_id" style="width:0;height: 0;visibility: hidden;font-size: 0;">
+              <%= participant_data.participant_id_mail%>
+            </p>
+          </div>
+
+          <div id="chat-screen">
+
+          </div>
+          <div class="send-area">
+            <input type="text" id="message-input">
+            <button>送信</button>
+          </div>
+        </section>
+  </main>
+  <!-- JavaScipt Stream SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/stream-chat@1.2.2/dist/browser.full-bundle.min.js"></script>
+  <!-- for making http requests -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+  <!-- Our custom JavaScript code -->
+  <script src="/js/custom.js"></script>
+</body>
+
+</html>

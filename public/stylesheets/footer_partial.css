@@ -1,0 +1,30 @@
+html {
+  font-size: 62.5%;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+main {
+  min-height: 100vh;
+}
+
+footer {
+  background-color: #fefdff;
+  padding: 2rem;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+footer ul li {
+  margin: 0 2rem;
+  font-size: 1.3rem;
+}
+
+footer p {
+  margin-top: 1rem;
+  text-align: center;
+}
+/*# sourceMappingURL=footer_partial.css.map */

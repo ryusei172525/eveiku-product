@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="/stylesheets/build-style.css">
+  <link rel="stylesheet" href='/stylesheets/build-page.css'>
+  <%- include('../partial/latest/head_partial',{key:'build-page',title:'build9',style:"",title:"ビルドページ" }) %>
+    <link rel="stylesheet" href="/stylesheets/build-page-layout.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap">
+    <style>
+      main {
+        margin-left: 0;
+        padding: 0;
+        bottom: 0;
+      }
+    </style>
+</head>
+
+<body>
+  <%- include('..//partial/latest/header_partial',{key:'build-page',title:'build9',avatar: avatar, name: name }) %>
+    <main class="main">
+      <div class="main-wrap" id="root"></div>
+      <div class="img-modal display-none">
+        <!-- ローカル -->
+        <!-- <iframe src="http://localhost:3000/upload-img" frameborder="0"></iframe> -->
+        <!-- 本番 -->
+        <iframe src="http://eveiku.jp/upload-img" frameborder="0"></iframe>
+      </div>
+      <div class="modyfy_pop">携帯版での作成は準備中です。</div>
+    </main>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script src="buildPage/dist/main.js"></script>
+    <script>
+
+      let img_path; //クリックした要素
+      let img_src;　//画像のsrc
+      let img_context; //html要素
+      let img_previous; //ボタンの前の要素
+      let img_parent; //ボタンの親の要素
+      let iframe;
+      // $('body').on('click', '.upload-img', function () {
+      //   $('.img-modal').removeClass('display-none');
+      //   $('.bg').removeClass('display-none');
+      //   img_path = $(this);
+      //   // iframeから挿入したい画像の取得
+      //   $('#local').on('load', function () {
+      //     let iframeContents = $(this).contents();
+      //     let path = iframeContents.find('.use');
+      //     path.on('click', function (event) {
+      //       //ローカル
+      //       iframe = $("#local");
+      //       $('#local')[0].contentDocument.location.reload(true);
+
+      //       //本番
+      //       // iframe = $("#production");
+      //       // $('#production')[0].contentDocument.location.reload(true);
+
+      //       img_src = iframe.contents().find(this).next(".path").html();
+      //       img_context = img_path.context;
+      //       console.log(img_context);
+      //       if (img_context.previousElementSibling != undefined) {
+      //         img_previous = img_context.previousElementSibling;
+      //         img_previous.src = img_src;
+      //       } else {
+      //         img_parent = img_context.parentNode;
+      //         img_parent.style.backgroundImage = "url(" + img_src + ")";
+      //       }
+      //       $('.img-modal').addClass('display-none');
+      //       $('.bg').addClass('display-none');
+      //     });
+      //   });
+      // });
+
+      $('body').on('click', '.user-name', function () {
+        $('.modal').removeClass('display-none');
+        $('.bg').removeClass('display-none');
+      });
+
+      $('body').on('click', '.bg', function () {
+        $('.modal').addClass('display-none');
+        $('.img-modal').addClass('display-none');
+        $('.bg').addClass('display-none');
+      });
+
+      $('body').on('click', '.menu-item', function () {
+        $('.modalbg').addClass('display-none');
+        $('.menu-modal').addClass('display-none');
+        $('body').removeClass('overflow-hidden');
+      });
+      $('body').on('click', '.modalbg', function () {
+        $('.modalbg').addClass('display-none');
+        $('.menu-modal').addClass('display-none');
+        $('body').removeClass('overflow-hidden');
+      });
+
+      $('body').on('click', '.plus-icon', function () {
+        $('.modalbg').removeClass('display-none');
+        $('.menu-modal').removeClass('display-none');
+        $('body').addClass('overflow-hidden');
+      });
+
+      $('.modal-section-item').on('click', function () {
+        $(this).addClass('isActive');
+        $('.modal-section-item').not($(this)).removeClass('isActive')
+      });
+
+      $('body').on('click', '.modal-section-item1', function () {
+        $('.menu-item').eq(0).addClass('display-none');
+        $('.menu-item').eq(1).addClass('display-none');
+        $('.menu-item').eq(2).removeClass('display-none');
+        $('.menu-item').eq(3).removeClass('display-none');
+        $('.menu-item').eq(4).removeClass('display-none');
+        $('.menu-item').eq(5).removeClass('display-none');
+        $('.menu-item').eq(6).removeClass('display-none');
+        $('.menu-item').eq(7).removeClass('display-none');
+        $('.menu-item').eq(8).removeClass('display-none');
+        $('.menu-item').eq(9).removeClass('display-none');
+        $('.menu-item').eq(10).removeClass('display-none');
+        $('.menu-item').eq(11).removeClass('display-none');
+        $('.menu-item').eq(12).removeClass('display-none');
+        $('.menu-item').eq(13).removeClass('display-none');
+        $('.menu-item').eq(14).addClass('display-none');
+        $('.menu-item').eq(15).addClass('display-none');
+        $('.menu-item').eq(16).addClass('display-none');
+        $('.menu-item').eq(17).addClass('display-none');
+        $('.menu-item').eq(18).addClass('display-none');
+        $('.menu-item').eq(19).addClass('display-none');
+        $('.menu-item').eq(20).addClass('display-none');
+        $('.menu-item').eq(21).addClass('display-none');
+        $('.menu-item').eq(22).addClass('display-none');
+        $('.menu-item').eq(23).addClass('display-none');
+        $('.menu-item').eq(24).addClass('display-none');
+        $('.menu-item').eq(25).addClass('display-none');
+        $('.menu-item').eq(26).addClass('display-none');
+        $('.menu-item').eq(27).addClass('display-none');
+        $('.menu-item').eq(28).addClass('display-none');
+        $('.menu-item').eq(29).addClass('display-none');
+        $('.menu-item').eq(30).addClass('display-none');
+        $('.menu-item').eq(31).addClass('display-none');
+        $('.menu-item').eq(32).addClass('display-none');
+        $('.menu-item').eq(33).addClass('display-none');
+        $('.menu-item').eq(34).addClass('display-none');
+        $('.menu-item').eq(35).addClass('display-none');
+      });
+      $('body').on('click', '.modal-section-item2', function () {
+        $('.menu-item').eq(0).addClass('display-none');
+        $('.menu-item').eq(1).addClass('display-none');
+        $('.menu-item').eq(2).addClass('display-none');
+        $('.menu-item').eq(3).addClass('display-none');
+        $('.menu-item').eq(4).addClass('display-none');
+        $('.menu-item').eq(5).addClass('display-none');
+        $('.menu-item').eq(6).addClass('display-none');
+        $('.menu-item').eq(7).addClass('display-none');
+        $('.menu-item').eq(8).addClass('display-none');
+        $('.menu-item').eq(9).addClass('display-none');
+        $('.menu-item').eq(10).addClass('display-none');
+        $('.menu-item').eq(11).addClass('display-none');
+        $('.menu-item').eq(12).addClass('display-none');
+        $('.menu-item').eq(13).addClass('display-none');
+        $('.menu-item').eq(14).removeClass('display-none');
+        $('.menu-item').eq(15).removeClass('display-none');
+        $('.menu-item').eq(16).removeClass('display-none');
+        $('.menu-item').eq(17).removeClass('display-none');
+        $('.menu-item').eq(18).removeClass('display-none');
+        $('.menu-item').eq(19).removeClass('display-none');
+        $('.menu-item').eq(20).removeClass('display-none');
+        $('.menu-item').eq(21).removeClass('display-none');
+        $('.menu-item').eq(22).addClass('display-none');
+        $('.menu-item').eq(23).addClass('display-none');
+        $('.menu-item').eq(24).addClass('display-none');
+        $('.menu-item').eq(25).addClass('display-none');
+        $('.menu-item').eq(26).addClass('display-none');
+        $('.menu-item').eq(27).addClass('display-none');
+        $('.menu-item').eq(28).addClass('display-none');
+        $('.menu-item').eq(29).addClass('display-none');
+        $('.menu-item').eq(30).addClass('display-none');
+        $('.menu-item').eq(31).addClass('display-none');
+        $('.menu-item').eq(32).addClass('display-none');
+        $('.menu-item').eq(33).addClass('display-none');
+        $('.menu-item').eq(34).addClass('display-none');
+        $('.menu-item').eq(35).addClass('display-none');
+      });
+      $('body').on('click', '.modal-section-item3', function () {
+        $('.menu-item').eq(0).removeClass('display-none');
+        $('.menu-item').eq(1).removeClass('display-none');
+        $('.menu-item').eq(2).addClass('display-none');
+        $('.menu-item').eq(3).addClass('display-none');
+        $('.menu-item').eq(4).addClass('display-none');
+        $('.menu-item').eq(5).addClass('display-none');
+        $('.menu-item').eq(6).addClass('display-none');
+        $('.menu-item').eq(7).addClass('display-none');
+        $('.menu-item').eq(8).addClass('display-none');
+        $('.menu-item').eq(9).addClass('display-none');
+        $('.menu-item').eq(10).addClass('display-none');
+        $('.menu-item').eq(11).addClass('display-none');
+        $('.menu-item').eq(12).addClass('display-none');
+        $('.menu-item').eq(13).addClass('display-none');
+        $('.menu-item').eq(14).addClass('display-none');
+        $('.menu-item').eq(15).addClass('display-none');
+        $('.menu-item').eq(16).addClass('display-none');
+        $('.menu-item').eq(17).addClass('display-none');
+        $('.menu-item').eq(18).addClass('display-none');
+        $('.menu-item').eq(19).addClass('display-none');
+        $('.menu-item').eq(20).addClass('display-none');
+        $('.menu-item').eq(21).addClass('display-none');
+        $('.menu-item').eq(22).removeClass('display-none');
+        $('.menu-item').eq(23).removeClass('display-none');
+        $('.menu-item').eq(24).removeClass('display-none');
+        $('.menu-item').eq(25).removeClass('display-none');
+        $('.menu-item').eq(26).removeClass('display-none');
+        $('.menu-item').eq(27).removeClass('display-none');
+        $('.menu-item').eq(28).removeClass('display-none');
+        $('.menu-item').eq(29).removeClass('display-none');
+        $('.menu-item').eq(30).removeClass('display-none');
+        $('.menu-item').eq(31).removeClass('display-none');
+        $('.menu-item').eq(32).removeClass('display-none');
+        $('.menu-item').eq(33).removeClass('display-none');
+        $('.menu-item').eq(34).removeClass('display-none');
+        $('.menu-item').eq(35).removeClass('display-none');
+      });
+    </script>
+</body>
+
+</html>

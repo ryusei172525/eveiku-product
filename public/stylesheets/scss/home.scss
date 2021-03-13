@@ -1,0 +1,243 @@
+// home.scss
+
+@import "./variable.scss";
+
+body {
+  margin: 0;
+  background-color: #f0f2f5;
+}
+html {
+  font-size: 62.5%;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+}
+//プロフィール画面
+.profile {
+  // display: flex;
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  grid-template-rows: 15rem 1fr;
+  grid-template-areas:
+    "a b"
+    "c c";
+  padding: 0 5rem 5rem 5rem;
+  margin: 0 0 5rem 0;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 5px -5px rgba($color: #000000, $alpha: 0.2);
+  @include sp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 0 5rem 0;
+  }
+}
+
+.container_icon {
+  & > img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    border: 0.4rem solid #f2ca1996;
+    object-fit: contain;
+  }
+}
+
+.container_text {
+  // padding-left: 5rem;
+  @include sp {
+    padding: 0 1rem;
+  }
+  .name {
+    h2 {
+      font-size: 3rem;
+      font-weight: bold;
+      padding: 2rem 0;
+      @include sp {
+        text-align: center;
+      }
+    }
+  }
+  .status {
+    display: grid;
+    grid-template-areas:
+      "a a"
+      "b b";
+    dl {
+      display: flex;
+      align-items: center;
+      padding-bottom: 1rem;
+      &:nth-of-type(2n) {
+        padding-left: 1rem;
+      }
+      dt {
+        font-size: 1.5rem;
+        display: flex;
+        align-self: center;
+        color: #818181;
+        min-width: 3rem;
+      }
+      dd {
+        font-size: 1.8rem;
+        padding-left: 1rem;
+        color: #464646;
+      }
+    }
+  }
+}
+
+.container_intro {
+  grid-area: c;
+  font-size: 2rem;
+  color: #464646;
+  padding-top: 1.5rem;
+  @include sp {
+    padding: 1rem;
+  }
+  p {
+    line-height: 3rem;
+    // white-space: pre-wrap;
+
+    @include sp {
+      line-height: unset;
+    }
+  }
+}
+
+// イベント履歴画面
+.event {
+  padding: 1rem;
+}
+
+.event {
+  h1 {
+    text-align: center;
+    padding-top: 1rem;
+  }
+  h2,
+  h3 {
+    display: flex;
+    justify-content: center;
+  }
+  h2 {
+    font-size: 2.5rem;
+    padding-top: 3rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+    padding-bottom: 2rem;
+    &:last-of-type {
+      margin-top: 1.5rem;
+    }
+  }
+}
+
+.container_event {
+  display: flex;
+  padding-left: 3rem;
+  overflow-y: hidden;
+  flex-wrap: initial;
+}
+
+.event article {
+  height: 30rem;
+  width: 22rem;
+  min-width: 22rem;
+  background-color: white;
+  border-radius: 7px;
+  padding: 1rem 1rem 0 1rem;
+}
+
+.event article {
+  display: grid;
+  grid-template-rows: 15rem 2fr 1fr 1fr 2fr;
+  &:not(:first-child) {
+    margin-left: 2rem;
+  }
+
+  div {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    filter: brightness(0.8);
+    transition: all 0.3s;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+    & > p {
+      z-index: 2;
+      position: absolute;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    &:hover {
+      position: relative;
+      transition: all 0.3s;
+      &::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        bottom: -1px;
+        left: -1px;
+        right: -1px;
+        background: inherit;
+        filter: brightness(0.5);
+        border-radius: 5px;
+        z-index: -1;
+      }
+    }
+  }
+
+  h4 {
+    font-size: 1.5rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    &::before {
+      content: "『";
+    }
+    &::after {
+      content: "』";
+    }
+  }
+
+  & > p:first-of-type {
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #464646;
+  }
+  p:not(:first-of-type) {
+    text-align: right;
+    margin: 0;
+    color: #a7a7a7;
+  }
+  p:nth-of-type(3)::before {
+    content: "＠";
+  }
+
+  p:nth-of-type(4) {
+    border-top: 2px dotted rgb(206, 208, 211);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & > a {
+      color: white;
+      text-decoration: none;
+      background-color: #f2cc19;
+      padding: 0.8rem 2rem;
+      border-radius: 5px;
+      &:hover {
+        background-color: #f0d250;
+      }
+    }
+  }
+}

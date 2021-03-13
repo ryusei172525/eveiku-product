@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+JP&family=Noto+Serif+JP&family=Roboto+Slab&family=Roboto:ital@0;1&display=swap");
+
+.update-input > textarea {
+  width: 80%;
+  height: 50px;
+}
+
+.change-text-style {
+  padding-top: 10px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+.change-text-style label {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  font-size: initial;
+}
+.change-text-style label > * {
+  height: 50px;
+}
+/* カラー変更 */
+.red {
+  color: red;
+}
+
+/* フォント変更 */
+
+/* 日本語向け */
+.KosugiMaru {
+  font-family: "Kosugi Maru", sans-serif;
+}
+.NotoSansJP {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.NotoSerifJP {
+  font-family: "Noto Serif JP", serif;
+}
+
+/* 英語向け */
+.Roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.RobotoSlab {
+  font-family: "Roboto Slab", serif;
+}
+
+.Georgia {
+  font-family: Georgia, serif;
+}

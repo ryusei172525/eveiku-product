@@ -1,0 +1,15 @@
+@import "./variable.scss";
+
+article {
+  a {
+    text-decoration: none;
+    color: unset;
+  }
+}
+
+@include sp {
+  main {
+    margin-left: initial;
+    width: initial;
+  }
+}

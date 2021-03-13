@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOP | イベイク</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/home.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-logo">
+            <a href="/home">
+                <img src="../images/eveiku_icon/eveiku_icon.png" width="50px" class="eveiku_logo">
+                <h1 class="logo">イベイク</h1>
+            </a>
+        </div>
+    </header>
+    <aside>
+        <ul>
+            <li class="active"  onclick="location.href='/home'">ホーム</li>
+            <li onclick="location.href='/holdEvent'">開催イベント</li>
+            <li onclick="location.href='/myEvent'">参加イベント</li>
+            <li onclick="location.href='/myAccount'">アカウント設定</li>
+        </ul>
+    </aside>
+    <main>
+        イベントに参加するユーザのプロフィール
+        <section class="profile">
+            <img src="<%= participate_user.avatar %>" alt="アイコン画像">
+            <div class="container_text">
+                <div>
+                    <h2><%= participate_user.name %></h2>
+                    <!-- <p>(<span style="color: blue;"></span>)</p> -->
+                </div>
+                <dl>
+                    <dt>所属</dt>
+                    <dd><%= participate_user.company %></dd>
+                </dl>
+                <dl>
+                    <dt>職種</dt>
+                    <dd><%= participate_user.occupation %></dd>
+                </dl>
+                <dl>
+                    <dt>出身</dt>
+                    <dd><%= participate_user.university %></dd>
+                </dl>
+            </div>
+        </section>
+
+        <div class="event">
+            <section>
+                <h2>参加イベント</h2>
+                <% if (participates_event.length===0) { %>
+                    <h1 class="none-events">現在参加しているイベントはありません</h1>
+                <% }else { %>
+                <section>
+                        <% var today = new Date(Date.now()); %>
+                        
+                    <h3>参加予定のイベント</h3>
+                    <div class="container_event">
+                        <% for (var i=0; i < participates_event.length; i++) { %>
+                            <% if(today < participates_event[i].date) { %>
+                        <article>
+                            <h4><%= participates_event[i].title %></h4>
+                            <p><%= participates_event[i].description %></p>
+                            <p>開催日時:
+                                <% if(participates_event[i].date===null){ %>
+                                日時なし
+                                <% }else{ %>
+                                    <%= participates_event[i].date.getFullYear() %>年<%=
+                                            participates_event[i].date.getMonth() + 1%>月<%=
+                                                participates_event[i].date.getDate() %>日
+                                <% } %></p>
+                            <p>開催場所:<%= participates_event[i].title %></p>
+                            <p> <a href="/public/<%= participates_event[i].url %>" %>">詳細を見る</a> </p>
+                        </article>
+                    </div>
+                            <%  } %>
+                        <%  } %>
+                </section>
+                <section>
+                    <h3>参加したイベント</h3>
+                    <di class="container_event">
+                        <% for (var i=0; i < participates_event.length; i++) { %>
+                            <% if(today > participates_event[i].date) { %>
+                        <article>
+                            <h4><%= participates_event[i].title %></h4>
+                            <p><%= participates_event[i].description %></p>
+                            <p>開催日時:
+                                <% if(participates_event[i].date===null){ %>
+                                日時なし
+                                <% }else{ %>
+                                    <%= participates_event[i].date.getFullYear() %>年<%=
+                                            participates_event[i].date.getMonth() + 1%>月<%=
+                                                participates_event[i].date.getDate() %>日
+                                <% } %></p>
+                            <p>開催場所:<%= participates_event[i].city %></p>
+                            <p> <a href="/public/<%= participates_event[i].url %>">詳細を見る</a> </p>
+                        </article>
+                    </di>
+                    <%  } %>
+                        <%  } %>
+                </section>
+            
+                <%  } %>
+            </section>
+
+            <section>
+                <h2>開催イベント</h2>
+                <% if (participant_event_ids.length===0) { %>
+                    <h1 class="none-events">現在開催しているイベントはありません</h1>
+                <% }else { %>
+                <section>
+                        <% var today = new Date(Date.now()); %>
+                        
+                    <h3>開催予定のイベント</h3>
+                    <div class="container_event">
+                        <% for (var i=0; i < participant_event_ids.length; i++) { %>
+                            <% if(today < participant_event_ids[i].date) { %>
+                        <article>
+                            <h4><%= participant_event_ids[i].title %></h4>
+                            <p><%= participant_event_ids[i].description %></p>
+                            <p>開催日時:
+                                <% if(participant_event_ids[i].date===null){ %>
+                                日時なし
+                                <% }else{ %>
+                                    <%= participant_event_ids[i].date.getFullYear() %>年<%=
+                                            participant_event_ids[i].date.getMonth() + 1%>月<%=
+                                                participant_event_ids[i].date.getDate() %>日
+                                <% } %></p>
+                            <p>開催場所:<%= participant_event_ids[i].title %></p>
+                            <p> <a href="/public/<%= participant_event_ids[i].url %>">詳細を見る</a> </p>
+                        </article>
+                    </div>
+                            <%  } %>
+                        <%  } %>
+                </section>
+                <section>
+                    <h3>開催済みイベント</h3>
+                    <di class="container_event">
+                        <% for (var i=0; i < participant_event_ids.length; i++) { %>
+                            <% if(today > participant_event_ids[i].date) { %>
+                        <article>
+                            <h4><%= participant_event_ids[i].title %></h4>
+                            <p><%= participant_event_ids[i].description %></p>
+                            <p>開催日時:
+                                <% if(participant_event_ids[i].date===null){ %>
+                                日時なし
+                                <% }else{ %>
+                                    <%= participant_event_ids[i].date.getFullYear() %>年<%=
+                                            participant_event_ids[i].date.getMonth() + 1%>月<%=
+                                                participant_event_ids[i].date.getDate() %>日
+                                <% } %></p>
+                            <p>開催場所:<%= participant_event_ids[i].city %></p>
+                            <p> <a href="/public/<%= participant_event_ids[i].url %>">詳細を見る</a> </p>
+                        </article>
+                    </di>
+                    <%  } %>
+                        <%  } %>
+                </section>
+            
+                <%  } %>
+            </section>
+        </div>
+    </main>
+
+</body>
+
+</html>

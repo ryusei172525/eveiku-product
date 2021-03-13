@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--  <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--  <link rel="stylesheet" href='/stylesheets/screen.css'>-->
+<!--  <title>pre-registration-screen</title>-->
+<!--</head>-->
+<%- include('../partial/header_pre-registration',{key:'screen',title:'イベイク|事前登録'}) %>
+
+
+<body>
+  <main>
+    <section class="pre-registration-screen">
+      <form class="pre-registration-form" action="/pre-register" method="POST">
+        <!-- <p class="pre-registration-desc__1">イベイクではイベントの雰囲気を写真や動画で分かりやすく伝えており、直感的に行きたいイベントを見つけることができます。</p>
+          <p class="pre-registration-desc__2">ビジネス交流会からビジネスセミナーまで、イベイクでは大小様々なイベントを取り揃えております。</p> -->
+        <div class="pre-registration-form__inner">
+          <h2 class="pre-registration-title title_section">アカウント作成</h2>
+          <input type="text" name="name" placeholder="名前" required>
+          <input type="email" name="email" placeholder="メールアドレス" required>
+          <input type="password" name="password" placeholder="パスワード" required>
+          <input type="number" name="age" placeholder="年齢" required>
+          <p class="selectdiv">
+            <select id="colorselector" name="gender" required>
+              <option value="" hidden>性別を選んでください</option>
+              <option class="black" value="男性">男性</option>
+              <option class="black" value="女性">女性</option>
+              <option class="black" value="その他">その他</option>
+            </select>
+          </p>
+          <input type="text" name="company" placeholder="会社名（又は学校名）" required>
+            <p class="selectdiv">
+              <select id="colorselector" name="occupation" required>
+                <option value="" hidden>職種を選んでください</option>
+                  <option class="black" value="PM・プロデューサー・ディレクター">PM・プロデューサー・ディレクター</option>
+                  <option class="black" value="マーケティング・PR">マーケティング・PR</option>
+                  <option class="black" value="デザイナー">デザイナー</option>
+                  <option class="black" value="コーポレート">コーポレート</option>
+                  <option class="black" value="経営・CxO">経営・CxO</option>
+                  <option class="black" value="事業開発">事業開発</option>
+                  <option class="black" value="セールス・カスタマーサクセス">セールス・カスタマーサクセス</option>
+                  <option class="black" value="コンサルティング">コンサルティング</option>
+                  <option class="black" value="編集・ライティング">編集・ライティング</option>
+                  <option class="black" value="投資家">投資家</option>
+                  <option class="black" value="学生">学生</option>
+              </select>
+          </p>
+            <input type="text" name="university" placeholder="最終学歴（学校名まで）" required>
+          <input type="submit" value="事前登録を完了する">
+        </div>
+      </form>
+    </section>
+  </main>
+
+</body>
+
+</html>
