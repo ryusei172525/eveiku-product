@@ -28,7 +28,15 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-server.listen(port);
+
+// ローカル
+// server.listen(port);
+
+
+server.listen(80, function(){
+  process.setuid(501);
+  console.log('listening on *:80');
+});
 
 server.on('error', onError);
 server.on('listening', onListening);
