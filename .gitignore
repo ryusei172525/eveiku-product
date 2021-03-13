@@ -6,6 +6,8 @@
 node_modules/
 .elasticbeanstalk/
 
-# config/
-# public/buildPage/dist/main.js
-# /.env
+#config/
+
+#public/buildPage/dist/main.js
+
+#/.env
