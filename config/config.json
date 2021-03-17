@@ -1,22 +1,22 @@
 
 {
   "development": {
-    "username": "holox",
-    "password": "test1234",
-    "database": "eveikuDB_production5",
-    "host": "holox.cxmzbpetwsir.ap-northeast-1.rds.amazonaws.com",
+    "username": "root",
+    "password": "dragonhead1211",
+    "database": "eveikuapp21_development",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "test1234",
+    "password": "dragonhead1211",
     "database": "eveikuapp2_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "test1234",
+    "password": "dragonhead1211",
     "database": "eveikuapp2_production",
     "host": "127.0.0.1",
     "dialect": "mysql"

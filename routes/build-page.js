@@ -141,7 +141,7 @@ router.get("/data/:id", authMiddleware, async function (req, res, next) {
   // 日付処理
   const draft_date = event.draft_date;
   const optimize_date = draft_date.toLocaleDateString().replaceAll("/", "-");
-
+  
   // ハッシュタグ処理
   let tag_list = ""
   const tags = await EventsTag.findAll({ where: { event_id: id } });
@@ -228,10 +228,10 @@ router.post("/test", authMiddleware, async function (req, res, next) {
   res.header("Content-Type", "text/plain;charset=utf-8");
   res.end(
     // 本番用
-    JSON.stringify({ url: "/public/" + urlCheck, event_id: event.id })
+    // JSON.stringify({ url: "/public/" + urlCheck, event_id: event.id })
 
-    // ローカル
-    // JSON.stringify({ url: "localhost:3000/public/" + urlCheck, event_id: event.id })
+    // ローカル(localhost:300いらない説)
+    JSON.stringify({ url: "localhost:3000/public/" + urlCheck, event_id: event.id })
   );
 });
 
@@ -277,10 +277,10 @@ router.post("/test/:id", authMiddleware, async function (req, res, next) {
   res.header("Content-Type", "text/plain;charset=utf-8");
   res.end(
     // 本番用
-    JSON.stringify({ url: "/public/" + url, event_id: event.id })
+    // JSON.stringify({ url: "/public/" + url, event_id: event.id })
 
     // ローカル
-    // JSON.stringify({ url: "localhost:3000/public/" + url, event_id: event.id })
+    JSON.stringify({ url: "localhost:3000/public/" + url, event_id: event.id })
   );
 });
 

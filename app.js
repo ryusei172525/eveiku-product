@@ -34,6 +34,9 @@ var preview_Router = require('./routes/preview');
 var already_Router = require('./routes/already');
 var limit_Router = require('./routes/limit');
 var chart_Router = require('./routes/chart');
+var terms_Router = require('./routes/terms');
+var privacy_Router = require('./routes/privacy');
+var low_Router = require('./routes/low')
 
 var app = express();
 
@@ -257,6 +260,9 @@ app.use("/already", already_Router);
 app.use("/limit", limit_Router);
 app.use("/chart", chart_Router);
 app.use("/message", message_Router);
+app.use("/terms", terms_Router);
+app.use("/privacy", privacy_Router);
+app.use("/low", low_Router);
 
 // 主催者用ページ
 app.use("/build-page", build_page_Router);

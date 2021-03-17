@@ -36,7 +36,7 @@
       <p class="btn_close_modal">×</p>
       <form action="/register" method="POST" name="signup">
         <input class="email" type="email" name="register_email" placeholder="メールアドレス" required>
-        <input class="password" type="password" name="register_password" placeholder="パスワード" required>
+        <input class="password" type="password" minlength="8" name="register_password" placeholder="パスワード(8文字以上)" required>
         <input class="name" type="text" name="register_name" placeholder="氏名" required>
         <select class="gender" name="register_gender" required>
           <option hidden>性別</option>

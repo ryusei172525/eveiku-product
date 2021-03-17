@@ -12,10 +12,8 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-// 本番
-var port = normalizePort(process.env.PORT || '80');
-// ローカル
-// var port = normalizePort(process.env.PORT || '3000');
+// process.env.PORT
+var port = normalizePort(process.env.PORT || '3000');
 
 app.set('port', port);
 
@@ -30,7 +28,7 @@ var server = http.createServer(app);
  */
 
 
-server.listen(port, function(){process.setuid("500")});
+server.listen(port);
 
 
 server.on('error', onError);
